@@ -8,9 +8,20 @@ import { Filter } from '../components/Map/Filter.tsx'
 <Layout title="Changing Cities Radverkehrs Monitoring">
   <main class="w-full h-screen relative flex">
     <Map client:load />
-    <div class="border-l border-gray-200 bg-ccGray-200 p-5 flex justify-between flex-col">
-      <h1 class="mt-2 font-normal font-display leading-tight">Monitoring des Berliner Radnetzes</h1>
-      <Filter client:load />
+    <div class="border-l w-80 border-ccGray-400 bg-ccGray-200 p-5 flex justify-between flex-col">
+      <div>
+        <h1 class="mt-2 font-normal font-display leading-tight">
+          Monitoring des Berliner Radnetzes
+        </h1>
+        <Filter client:load />
+        <details class="text-xs leading-normal text-ccTypo">
+          <summary class="underline hover:no-underline cursor-pointer">Details…</summary>
+           Das Monitoring berücksichtigt nur fertiggestellte Radwege seit 2018. Es betrachtet die
+          baulichen Standard Breite, Führungsform, Oberlfäche und bewertet Maßnahmen zur Vermeidung
+          von Konflikten mit Kfz. Die Bewertung erfolgt in den Kategorien "Erfüllt", "Teilweise
+          erfüllt", "Nicht erfüllt".
+        </details>
+      </div>
       <Footer />
     </div>
   </main>

@@ -4,9 +4,9 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import { Protocol } from 'pmtiles'
 import { useEffect } from 'react'
 import ReactMapGl, { Layer, Source } from 'react-map-gl/maplibre'
-import { essentialFilterWithStyleFilter } from './filters'
+import { essentialFilterWithStyleFilter, partialFilterWithStyleFilter } from './filters'
 import { layers } from './layers'
-import { $searchParams } from './stores/searchParams'
+import { $searchParams, type SearchParams } from './stores/searchParams'
 
 export const Map = () => {
   useEffect(() => {
@@ -17,8 +17,7 @@ export const Map = () => {
     }
   }, [])
 
-  const params = useStore($searchParams)
-  console.log(params)
+  const params = useStore($searchParams) as SearchParams
 
   return (
     <ReactMapGl
@@ -38,13 +37,20 @@ export const Map = () => {
         attribution="© Geoportal Berlin/Radverkehrsnetz, GB infraVelo GmbH/Radschnellverbindungen, Changing Cities/Monitoring zum Radverkehrsnetz"
       >
         {layers.map((layer) => {
+          let filter = layer.filter
+          if (params?.filter === 'wesentliche') {
+            filter = essentialFilterWithStyleFilter(layer.filter) as any
+          }
+          if (params?.filter === 'teilweise') {
+            filter = partialFilterWithStyleFilter(layer.filter) as any
+          }
           return (
             <Layer
               key={layer.id}
               {...(layer as any)}
               source="changing-cities-radnetz-monitoring"
               source-layer="default"
-              filter={essentialFilterWithStyleFilter(layer.filter) as any}
+              filter={filter}
             />
           )
         })}

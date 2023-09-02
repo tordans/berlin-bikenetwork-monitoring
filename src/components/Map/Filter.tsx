@@ -1,5 +1,6 @@
 import { useStore } from '@nanostores/react'
 import { $searchParams } from './stores/searchParams'
+import { twJoin } from 'tailwind-merge'
 
 export const Filter = () => {
   const params = useStore($searchParams)
@@ -8,9 +9,23 @@ export const Filter = () => {
     <nav>
       <button
         onClick={() => {
+          $searchParams.open({})
+        }}
+        className={twJoin(
+          params?.filter === undefined ? 'font-bold' : '',
+          'flex items-center justify-center border p-3',
+        )}
+      >
+        Radnetz
+      </button>
+      <button
+        onClick={() => {
           $searchParams.open({ filter: 'wesentliche' })
         }}
-        className={params?.filter === 'wesentliche' ? 'font-bold' : ''}
+        className={twJoin(
+          params?.filter === 'wesentliche' ? 'font-bold' : '',
+          'flex items-center justify-center border p-3',
+        )}
       >
         Wesentliche
       </button>
@@ -18,7 +33,10 @@ export const Filter = () => {
         onClick={() => {
           $searchParams.open({ filter: 'teilweise' })
         }}
-        className={params?.filter === 'teilweise' ? 'font-bold' : ''}
+        className={twJoin(
+          params?.filter === 'teilweise' ? 'font-bold' : '',
+          'flex items-center justify-center border p-3',
+        )}
       >
         Teilweise
       </button>
