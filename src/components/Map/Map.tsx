@@ -3,6 +3,8 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import { Protocol } from 'pmtiles'
 import React, { useEffect, useState } from 'react'
 import ReactMapGl, { Layer, Source } from 'react-map-gl/maplibre'
+import { layers } from './layers'
+import { essentialFilterWithStyleFilter } from './filters'
 
 export const Map: React.FC = () => {
   useEffect(() => {
@@ -30,16 +32,17 @@ export const Map: React.FC = () => {
         url="pmtiles://https://atlas-tiles.s3.eu-central-1.amazonaws.com/changing-cities-radnetz-monitoring.pmtiles"
         attribution="© Geoportal Berlin/Radverkehrsnetz, GB infraVelo GmbH/Radschnellverbindungen, Changing Cities/Monitoring zum Radverkehrsnetz"
       >
-        <Layer
-          id="changing-cities-radnetz-monitoring"
-          type="line"
-          source="changing-cities-radnetz-monitoring"
-          source-layer="default"
-          paint={{
-            'line-color': '#000',
-            'line-width': 2,
-          }}
-        />
+        {layers.map((layer) => {
+          return (
+            <Layer
+              key={layer.id}
+              {...(layer as any)}
+              source="changing-cities-radnetz-monitoring"
+              source-layer="default"
+              filter={essentialFilterWithStyleFilter(layer.filter) as any}
+            />
+          )
+        })}
       </Source>
     </ReactMapGl>
   )
