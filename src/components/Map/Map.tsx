@@ -1,12 +1,14 @@
+import { useStore } from '@nanostores/react'
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { Protocol } from 'pmtiles'
-import React, { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import ReactMapGl, { Layer, Source } from 'react-map-gl/maplibre'
-import { layers } from './layers'
 import { essentialFilterWithStyleFilter } from './filters'
+import { layers } from './layers'
+import { $searchParams } from './stores/searchParams'
 
-export const Map: React.FC = () => {
+export const Map = () => {
   useEffect(() => {
     let protocol = new Protocol()
     maplibregl.addProtocol('pmtiles', protocol.tile)
@@ -14,6 +16,9 @@ export const Map: React.FC = () => {
       maplibregl.removeProtocol('pmtiles')
     }
   }, [])
+
+  const params = useStore($searchParams)
+  console.log(params)
 
   return (
     <ReactMapGl

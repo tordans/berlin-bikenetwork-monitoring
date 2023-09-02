@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import { Map } from '../components/Map/Map.tsx'
 import Footer from '../components/Footer.astro'
+import { Filter } from '../components/Map/Filter.tsx'
 ---
 
 <Layout title="Changing Cities Radverkehrs Monitoring">
@@ -9,7 +10,7 @@ import Footer from '../components/Footer.astro'
     <Map client:load />
     <div class="border-l border-gray-200 bg-ccGray-200 p-5 flex justify-between flex-col">
       <h1 class="mt-2 font-normal font-display leading-tight">Monitoring des Berliner Radnetzes</h1>
-
+      <Filter client:load />
       <Footer />
     </div>
   </main>
