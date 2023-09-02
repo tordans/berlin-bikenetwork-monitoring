@@ -1,13 +1,16 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { Map } from '../components/Map.tsx'
-import Footer from '../components/layout/Footer.astro'
+import Footer from '../components/Footer.astro'
 ---
 
 <Layout title="Changing Cities Radverkehrs Monitoring">
-  <main class="max-w-prose">
-    <h1>Changing Cities Radverkehrs Monitoring</h1>
+  <main class="w-full h-screen relative flex">
     <Map client:load />
-    <Footer />
+    <div class="border-l border-gray-200 bg-ccGray-200 p-5 flex justify-between flex-col">
+      <h1 class="mt-2 font-normal font-display leading-tight">Monitoring des Berliner Radnetzes</h1>
+
+      <Footer />
+    </div>
   </main>
 </Layout>
