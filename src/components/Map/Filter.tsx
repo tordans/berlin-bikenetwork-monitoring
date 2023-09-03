@@ -14,44 +14,37 @@ export const Filter = () => {
     setSelected((params?.anzeige as SearchParams['anzeige']) || 'alles')
   }, [])
 
+  const buttons: { name: string; key: SearchParams['anzeige']; km: string }[] = [
+    { name: 'Zielnetz', key: 'alles', km: '2.698' },
+    { name: 'Teilweise', key: 'teilweise', km: '113' },
+    {
+      name: 'Wesentliche',
+      key: 'wesentliche',
+      km: '26,8',
+    },
+  ]
+
   return (
     <nav className="absolute bottom-10 inset-x-2 items-center justify-center flex ">
-      <button
-        onClick={() => {
-          $searchParams.open({ anzeige: 'alles' })
-          setSelected('alles')
-        }}
-        className={twJoin(
-          selected === 'alles' ? 'font-bold' : '',
-          'flex items-center justify-center border p-3',
-        )}
-      >
-        Radnetz
-      </button>
-      <button
-        onClick={() => {
-          $searchParams.open({ anzeige: 'wesentliche' })
-          setSelected('wesentliche')
-        }}
-        className={twJoin(
-          selected === 'wesentliche' ? 'font-bold' : '',
-          'flex items-center justify-center border p-3',
-        )}
-      >
-        Wesentliche
-      </button>
-      <button
-        onClick={() => {
-          $searchParams.open({ anzeige: 'teilweise' })
-          setSelected('teilweise')
-        }}
-        className={twJoin(
-          selected === 'teilweise' ? 'font-bold' : '',
-          'flex items-center justify-center border p-3',
-        )}
-      >
-        Teilweise
-      </button>
+      {buttons.map((button) => {
+        return (
+          <button
+            key={button.name}
+            onClick={() => {
+              $searchParams.open({ anzeige: button.key })
+              setSelected(button.key)
+            }}
+            className={twJoin(
+              selected === button.key ? 'font-bold' : '',
+              'flex items-center justify-center border p-3',
+            )}
+          >
+            {button.name}
+            <br />
+            {button.km} km
+          </button>
+        )
+      })}
     </nav>
   )
 }
