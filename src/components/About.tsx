@@ -95,7 +95,16 @@ export const About = () => {
       </div>
       <div className="text-xs">
         <a href="https://changing-cities.org/impressum">Impressum</a> –{' '}
-        <a href="/datenschutz">Datenschutz</a>
+        <a
+          href="/datenschutz"
+          onClick={() =>
+            alert(
+              'TODO. Aktuell Github Pages für Hosting der Website, Amazon Webservices für Hosting der Map/pmTiles, radverkehrsatlas für Hosting der Map/Boundaries',
+            )
+          }
+        >
+          Datenschutz
+        </a>
       </div>
     </nav>
   )
