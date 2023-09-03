@@ -1,7 +1,7 @@
 import { useStore } from '@nanostores/react'
 import { useEffect, useState } from 'react'
 import svgLogo from './assets/logo.svg'
-import { $searchParams, type SearchParams } from './stores/searchParams'
+import { $searchParams, type SearchParams } from './store'
 import { AboutLegend } from './AboutLegend'
 
 export const About = () => {

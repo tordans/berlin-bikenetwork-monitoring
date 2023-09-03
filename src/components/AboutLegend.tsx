@@ -1,6 +1,6 @@
 import { useStore } from '@nanostores/react'
 import { useEffect, useState } from 'react'
-import { $searchParams, type SearchParams } from './stores/searchParams'
+import { $searchParams, type SearchParams } from './store'
 import { twJoin } from 'tailwind-merge'
 
 export type LegendFokusType = undefined | 'hvs' | 'ergaenzungsnetz' | 'rsv' | 'vorrangnetz'

@@ -1,7 +1,7 @@
 import { useStore } from '@nanostores/react'
 import { useEffect, useState } from 'react'
 import { twJoin } from 'tailwind-merge'
-import { $searchParams, type SearchParams } from '../stores/searchParams'
+import { $searchParams, type SearchParams } from '../store'
 
 export const Filter = () => {
   const params = useStore($searchParams)

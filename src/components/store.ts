@@ -1,5 +1,5 @@
 import { createSearchParams } from '@nanostores/router'
-import type { LegendFokusType } from '../AboutLegend'
+import type { LegendFokusType } from './AboutLegend'
 
 export type SearchParams = {
   anzeige: 'alles' | 'wesentliche' | 'teilweise'
