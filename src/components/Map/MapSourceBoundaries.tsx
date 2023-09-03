@@ -3,6 +3,7 @@ import { Layer, Source } from 'react-map-gl/maplibre'
 export const MapSourceBoundaries = () => {
   return (
     <Source
+      id="boundaries"
       type="vector"
       tiles={['https://tiles.radverkehrsatlas.de/public.boundaries/{z}/{x}/{y}.pbf']}
       attribution=""

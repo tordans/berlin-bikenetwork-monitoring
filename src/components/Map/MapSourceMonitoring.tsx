@@ -10,6 +10,7 @@ export const MapSourceMonitoring = () => {
 
   return (
     <Source
+      id="monitoring"
       type="vector"
       url="pmtiles://https://atlas-tiles.s3.eu-central-1.amazonaws.com/changing-cities-radnetz-monitoring.pmtiles"
       attribution="© Geoportal Berlin/Radverkehrsnetz, GB infraVelo GmbH/Radschnellverbindungen, Changing Cities/Monitoring zum Radverkehrsnetz"
