@@ -3,7 +3,7 @@ import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { Protocol } from 'pmtiles'
 import { useEffect } from 'react'
-import ReactMapGl, { Layer, Source } from 'react-map-gl/maplibre'
+import ReactMapGl, { Layer, NavigationControl, Source } from 'react-map-gl/maplibre'
 import { essentialFilterWithStyleFilter, partialFilterWithStyleFilter } from './filters'
 import { layers } from './layers'
 import { $searchParams, type SearchParams } from './stores/searchParams'
@@ -55,6 +55,7 @@ export const Map = () => {
           )
         })}
       </Source>
+      <NavigationControl showCompass={false} position="top-left" />
     </ReactMapGl>
   )
 }

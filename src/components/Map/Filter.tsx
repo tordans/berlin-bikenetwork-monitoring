@@ -15,7 +15,7 @@ export const Filter = () => {
   }, [])
 
   return (
-    <nav>
+    <nav className="absolute bottom-10 inset-x-2 items-center justify-center flex ">
       <button
         onClick={() => {
           $searchParams.open({ anzeige: 'alles' })
