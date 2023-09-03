@@ -17,9 +17,9 @@ export const Filter = () => {
   const baseKm = 2698
   const buttons: { name: string; key: SearchParams['anzeige']; km: number }[] = [
     { name: 'Zielnetz', key: 'alles', km: baseKm },
-    { name: 'Teilweise erfüllt', key: 'teilweise', km: 113 },
+    { name: 'Mindestens ein Standard teilweise erfüllt', key: 'teilweise', km: 113 },
     {
-      name: 'Wesentliches erfüllt',
+      name: 'Wesentliche Standards erfüllt',
       key: 'wesentliche',
       km: 26.8,
     },
@@ -37,7 +37,7 @@ export const Filter = () => {
             <button
               key={button.name}
               className={twJoin(
-                'px-4 py-5 sm:p-6 text-left w-60 relative first:rounded-l-lg last:rounded-r-lg shadow-inner',
+                'px-4 py-5 sm:p-6 text-left w-60 relative first:rounded-l-lg last:rounded-r-lg shadow-inner items-start justify-end flex flex-col',
                 selected === button.key
                   ? 'bg-ccGray-200 shadow-ccGray-300'
                   : 'cursor-pointer hover:bg-ccGray-50',
@@ -53,7 +53,7 @@ export const Filter = () => {
                 </div>
               )}
               <dt className="text-base font-normal text-gray-900">{button.name}</dt>
-              <dd className="mt-1 flex items-baseline justify-between md:block lg:flex">
+              <dd className="mt-1 flex items-baseline justify-between md:block lg:flex w-full">
                 <div className="flex items-baseline text-2xl font-semibold text-ccBlue-600">
                   {button.km.toLocaleString(undefined, { minimumFractionDigits: 1 })}
                   <span className="ml-2 text-sm font-medium text-gray-500">km</span>
