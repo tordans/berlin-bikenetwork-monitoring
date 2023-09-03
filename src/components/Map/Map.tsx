@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 import ReactMapGl, { Layer, NavigationControl, Source } from 'react-map-gl/maplibre'
 import { essentialFilterWithStyleFilter, partialFilterWithStyleFilter } from './filters'
 import { layers } from './layers'
-import { $searchParams, type SearchParams } from './stores/searchParams'
+import { $searchParams, type SearchParams } from '../stores/searchParams'
 
 export const Map = () => {
   useEffect(() => {
@@ -55,7 +55,7 @@ export const Map = () => {
           )
         })}
       </Source>
-      <NavigationControl showCompass={false} position="top-left" />
+      <NavigationControl showCompass={false} position="top-right" />
     </ReactMapGl>
   )
 }

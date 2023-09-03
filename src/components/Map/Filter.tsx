@@ -1,7 +1,7 @@
 import { useStore } from '@nanostores/react'
 import { useEffect, useState } from 'react'
 import { twJoin } from 'tailwind-merge'
-import { $searchParams, type SearchParams } from './stores/searchParams'
+import { $searchParams, type SearchParams } from '../stores/searchParams'
 
 export const Filter = () => {
   const params = useStore($searchParams)
@@ -10,7 +10,7 @@ export const Filter = () => {
 
   // Initialize URL with filter=none
   useEffect(() => {
-    $searchParams.open({ anzeige: params?.anzeige || 'alles' })
+    $searchParams.open({ ...params, ...{ anzeige: params?.anzeige || 'alles' } })
     setSelected((params?.anzeige as SearchParams['anzeige']) || 'alles')
   }, [])
 
@@ -41,14 +41,14 @@ export const Filter = () => {
                 selected === button.key ? 'bg-ccGray-200' : 'cursor-pointer hover:bg-ccGray-50',
               )}
               onClick={() => {
-                $searchParams.open({ anzeige: button.key })
+                $searchParams.open({ ...params, ...{ anzeige: button.key } })
                 setSelected(button.key)
               }}
             >
               <dt className="text-base font-normal text-gray-900">{button.name}</dt>
               <dd className="mt-1 flex items-baseline justify-between md:block lg:flex">
                 <div className="flex items-baseline text-2xl font-semibold text-ccBlue-600">
-                  {button.km}
+                  {button.km.toLocaleString(undefined, { minimumFractionDigits: 1 })}
                   <span className="ml-2 text-sm font-medium text-gray-500">km</span>
                 </div>
 
