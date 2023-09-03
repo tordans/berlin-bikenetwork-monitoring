@@ -27,7 +27,7 @@ export const Filter = () => {
 
   return (
     <nav className="absolute bottom-10 inset-x-0 items-center justify-center flex">
-      <dl className="grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow md:grid-cols-3 md:divide-x md:divide-y-0">
+      <dl className="grid grid-cols-1 divide-y divide-gray-200 rounded-lg bg-white shadow md:grid-cols-3 md:divide-x md:divide-y-0">
         {buttons.map((button) => {
           const percent = Number(button.km / baseKm).toLocaleString(undefined, {
             style: 'percent',
@@ -37,14 +37,21 @@ export const Filter = () => {
             <button
               key={button.name}
               className={twJoin(
-                'px-4 py-5 sm:p-6 text-left w-60',
-                selected === button.key ? 'bg-ccGray-200' : 'cursor-pointer hover:bg-ccGray-50',
+                'px-4 py-5 sm:p-6 text-left w-60 relative first:rounded-l-lg last:rounded-r-lg shadow-inner',
+                selected === button.key
+                  ? 'bg-ccGray-200 shadow-ccGray-300'
+                  : 'cursor-pointer hover:bg-ccGray-50',
               )}
               onClick={() => {
                 $searchParams.open({ ...params, ...{ anzeige: button.key } })
                 setSelected(button.key)
               }}
             >
+              {selected === button.key && (
+                <div className="absolute -top-3 right-1/2 translate-y-1/2 border-8 border-t-0 border-transparent border-b-ccGray-300">
+                  {/* Arrow */}
+                </div>
+              )}
               <dt className="text-base font-normal text-gray-900">{button.name}</dt>
               <dd className="mt-1 flex items-baseline justify-between md:block lg:flex">
                 <div className="flex items-baseline text-2xl font-semibold text-ccBlue-600">
