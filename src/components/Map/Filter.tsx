@@ -14,37 +14,74 @@ export const Filter = () => {
     setSelected((params?.anzeige as SearchParams['anzeige']) || 'alles')
   }, [])
 
-  const buttons: { name: string; key: SearchParams['anzeige']; km: string }[] = [
-    { name: 'Zielnetz', key: 'alles', km: '2.698' },
-    { name: 'Teilweise', key: 'teilweise', km: '113' },
+  const baseKm = 2698
+  const buttons: { name: string; key: SearchParams['anzeige']; km: number }[] = [
+    { name: 'Zielnetz', key: 'alles', km: baseKm },
+    { name: 'Teilweise erfüllt', key: 'teilweise', km: 113 },
     {
-      name: 'Wesentliche',
+      name: 'Wesentliches erfüllt',
       key: 'wesentliche',
-      km: '26,8',
+      km: 26.8,
     },
   ]
 
   return (
-    <nav className="absolute bottom-10 inset-x-2 items-center justify-center flex ">
-      {buttons.map((button) => {
-        return (
-          <button
-            key={button.name}
-            onClick={() => {
-              $searchParams.open({ anzeige: button.key })
-              setSelected(button.key)
-            }}
-            className={twJoin(
-              selected === button.key ? 'font-bold' : '',
-              'flex items-center justify-center border p-3',
-            )}
-          >
-            {button.name}
-            <br />
-            {button.km} km
-          </button>
-        )
-      })}
+    <nav className="absolute bottom-10 inset-x-0 items-center justify-center flex">
+      <dl className="grid grid-cols-1 divide-y divide-gray-200 overflow-hidden rounded-lg bg-white shadow md:grid-cols-3 md:divide-x md:divide-y-0">
+        {buttons.map((button) => {
+          const percent = Number(button.km / baseKm).toLocaleString(undefined, {
+            style: 'percent',
+            minimumFractionDigits: 2,
+          })
+          return (
+            <button
+              key={button.name}
+              className={twJoin(
+                'px-4 py-5 sm:p-6 text-left w-60',
+                selected === button.key ? 'bg-ccGray-200' : 'cursor-pointer hover:bg-ccGray-50',
+              )}
+              onClick={() => {
+                $searchParams.open({ anzeige: button.key })
+                setSelected(button.key)
+              }}
+            >
+              <dt className="text-base font-normal text-gray-900">{button.name}</dt>
+              <dd className="mt-1 flex items-baseline justify-between md:block lg:flex">
+                <div className="flex items-baseline text-2xl font-semibold text-ccBlue-600">
+                  {button.km}
+                  <span className="ml-2 text-sm font-medium text-gray-500">km</span>
+                </div>
+
+                {button.km !== baseKm && (
+                  <div
+                    className={twJoin(
+                      'bg-ccOrange-100 text-ccOrange-800',
+                      'inline-flex items-baseline rounded-full px-2.5 py-0.5 text-sm font-medium md:mt-2 lg:mt-0',
+                    )}
+                  >
+                    {/* <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                      aria-hidden="true"
+                      className="-ml-1 mr-0.5 h-5 w-5 flex-shrink-0 self-center text-red-500"
+                    >
+                      <path
+                        fill-rule="evenodd"
+                        d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z"
+                        clip-rule="evenodd"
+                      />
+                    </svg> */}
+
+                    <span className="sr-only">Weniger als {percent}.</span>
+                    {percent}
+                  </div>
+                )}
+              </dd>
+            </button>
+          )
+        })}
+      </dl>
     </nav>
   )
 }
