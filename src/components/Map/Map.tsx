@@ -4,6 +4,7 @@ import { Protocol } from 'pmtiles'
 import { useEffect } from 'react'
 import ReactMapGl, { NavigationControl } from 'react-map-gl/maplibre'
 import { MapSourceMonitoring } from './MapSourceMonitoring'
+import { $mapLoaded } from '../store'
 import { MapSourceBoundaries } from './MapSourceBoundaries'
 
 export const Map = () => {
@@ -25,6 +26,7 @@ export const Map = () => {
       style={{ width: '100%', height: '100%' }}
       // Style: https://cloud.maptiler.com/maps/dataviz/
       mapStyle="https://api.maptiler.com/maps/dataviz/style.json?key=ur6Yh3ULc6QjatOYBgln"
+      onLoad={() => $mapLoaded.set(true)}
       hash
     >
       <MapSourceBoundaries />
