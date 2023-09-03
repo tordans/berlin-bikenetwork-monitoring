@@ -4,6 +4,7 @@ import { Protocol } from 'pmtiles'
 import { useEffect } from 'react'
 import ReactMapGl, { NavigationControl } from 'react-map-gl/maplibre'
 import { MapSourceMonitoring } from './MapSourceMonitoring'
+import { MapSourceBoundaries } from './MapSourceBoundaries'
 
 export const Map = () => {
   useEffect(() => {
@@ -26,6 +27,7 @@ export const Map = () => {
       mapStyle="https://api.maptiler.com/maps/dataviz/style.json?key=ur6Yh3ULc6QjatOYBgln"
       hash
     >
+      <MapSourceBoundaries />
       <MapSourceMonitoring />
       <NavigationControl showCompass={false} position="top-right" />
     </ReactMapGl>
