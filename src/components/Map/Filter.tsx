@@ -1,18 +1,28 @@
 import { useStore } from '@nanostores/react'
-import { $searchParams } from './stores/searchParams'
+import { useEffect, useState } from 'react'
 import { twJoin } from 'tailwind-merge'
+import { $searchParams, type SearchParams } from './stores/searchParams'
 
 export const Filter = () => {
   const params = useStore($searchParams)
+  // TODO: I really don't get why we need this but something prevents the rerendering of the buttons so the active state is wrong. Did not find any AstroJS Docs on this. And we are doing what we are supposed to do with nanostores.
+  const [selected, setSelected] = useState<SearchParams['anzeige']>('alles')
+
+  // Initialize URL with filter=none
+  useEffect(() => {
+    $searchParams.open({ anzeige: params?.anzeige || 'alles' })
+    setSelected((params?.anzeige as SearchParams['anzeige']) || 'alles')
+  }, [])
 
   return (
     <nav>
       <button
         onClick={() => {
-          $searchParams.open({})
+          $searchParams.open({ anzeige: 'alles' })
+          setSelected('alles')
         }}
         className={twJoin(
-          params?.filter === undefined ? 'font-bold' : '',
+          selected === 'alles' ? 'font-bold' : '',
           'flex items-center justify-center border p-3',
         )}
       >
@@ -20,10 +30,11 @@ export const Filter = () => {
       </button>
       <button
         onClick={() => {
-          $searchParams.open({ filter: 'wesentliche' })
+          $searchParams.open({ anzeige: 'wesentliche' })
+          setSelected('wesentliche')
         }}
         className={twJoin(
-          params?.filter === 'wesentliche' ? 'font-bold' : '',
+          selected === 'wesentliche' ? 'font-bold' : '',
           'flex items-center justify-center border p-3',
         )}
       >
@@ -31,10 +42,11 @@ export const Filter = () => {
       </button>
       <button
         onClick={() => {
-          $searchParams.open({ filter: 'teilweise' })
+          $searchParams.open({ anzeige: 'teilweise' })
+          setSelected('teilweise')
         }}
         className={twJoin(
-          params?.filter === 'teilweise' ? 'font-bold' : '',
+          selected === 'teilweise' ? 'font-bold' : '',
           'flex items-center justify-center border p-3',
         )}
       >

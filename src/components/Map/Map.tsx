@@ -38,10 +38,10 @@ export const Map = () => {
       >
         {layers.map((layer) => {
           let filter = layer.filter
-          if (params?.filter === 'wesentliche') {
+          if (params?.anzeige === 'wesentliche') {
             filter = essentialFilterWithStyleFilter(layer.filter) as any
           }
-          if (params?.filter === 'teilweise') {
+          if (params?.anzeige === 'teilweise') {
             filter = partialFilterWithStyleFilter(layer.filter) as any
           }
           return (
