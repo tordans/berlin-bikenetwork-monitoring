@@ -3,9 +3,9 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import { Protocol } from 'pmtiles'
 import { useEffect } from 'react'
 import ReactMapGl, { NavigationControl } from 'react-map-gl/maplibre'
-import { MapSourceMonitoring } from './MapSourceMonitoring'
 import { $mapLoaded } from '../store'
 import { MapSourceBoundaries } from './MapSourceBoundaries'
+import { MapSourceMonitoring } from './MapSourceMonitoring'
 
 export const Map = () => {
   useEffect(() => {
@@ -32,6 +32,7 @@ export const Map = () => {
       <MapSourceBoundaries />
       <MapSourceMonitoring />
       <NavigationControl showCompass={false} position="top-right" />
+      {/* <MapData /> */}
     </ReactMapGl>
   )
 }
