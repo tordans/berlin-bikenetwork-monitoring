@@ -1,4 +1,4 @@
-export const essentialFilterWithStyleFilter = (filter: any[]) => {
+export const essentialFilterWithStyleFilter = (filter: any[], fokusFilter: any[] | undefined) => {
   /*
     // QGIS:
     "CC_Netzkategorie" is not null and
@@ -11,16 +11,17 @@ export const essentialFilterWithStyleFilter = (filter: any[]) => {
   return [
     'all',
     filter,
+    fokusFilter,
     ['!=', ['get', 'CC_Netzkategorie'], null],
     ['>=', ['get', 'Monitor_JahrLetzteErneuerung'], 2018],
     ['in', ['get', 'Monitor_Breite'], ['literal', ['E', 'U']]],
     ['in', ['get', 'Monitor_Führungsform'], ['literal', ['E', 'U']]],
     ['in', ['get', 'Monitor_Oberfläche'], ['literal', ['E', 'U']]],
     ['in', ['get', 'Monitor_KfzStörungVermeiden'], ['literal', ['E', 'U']]],
-  ]
+  ].filter(Boolean)
 }
 
-export const partialFilterWithStyleFilter = (filter: any[]) => {
+export const partialFilterWithStyleFilter = (filter: any[], fokusFilter: any[] | undefined) => {
   /*
     // QGIS:
     "CC_Netzkategorie" is not null and
@@ -35,6 +36,7 @@ export const partialFilterWithStyleFilter = (filter: any[]) => {
   return [
     'all',
     filter,
+    fokusFilter,
     ['!=', ['get', 'CC_Netzkategorie'], null],
     ['>=', ['get', 'Monitor_JahrLetzteErneuerung'], 2018],
     [
@@ -44,5 +46,5 @@ export const partialFilterWithStyleFilter = (filter: any[]) => {
       ['in', ['get', 'Monitor_Oberfläche'], ['literal', ['E', 'T', 'U']]],
       ['in', ['get', 'Monitor_KfzStörungVermeiden'], ['literal', ['E', 'T', 'U']]],
     ],
-  ]
+  ].filter(Boolean)
 }

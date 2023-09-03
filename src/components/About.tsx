@@ -2,6 +2,7 @@ import { useStore } from '@nanostores/react'
 import { useEffect, useState } from 'react'
 import svgLogo from './assets/logo.svg'
 import { $searchParams, type SearchParams } from './stores/searchParams'
+import { AboutLegend } from './AboutLegend'
 
 export const About = () => {
   const params = useStore($searchParams)
@@ -76,6 +77,7 @@ export const About = () => {
 
         <span className="sr-only">Details ausblenden</span>
       </button>
+
       <div className="mt-18">
         <div className="flex justify-center">
           <img src={svgLogo.src} alt="Changing Cities" className="h-20 p-0 m-0" />
@@ -83,9 +85,10 @@ export const About = () => {
         <h1 className="mt-4 text-center font-normal text-xl font-display leading-[1.3rem] text-ccBlue-600">
           Monitoring des Berliner Radnetzes
         </h1>
-        <h2 className="font-display mt-8">Legende</h2>
-        <p className="text-sm">TODO</p>
-        <h2 className="font-display mt-4">Details zum Monitoring</h2>
+
+        <AboutLegend />
+
+        <h2 className="font-display mt-6">Details zum Monitoring</h2>
         <p className="text-sm">
           Das Monitoring berücksichtigt nur fertiggestellte Radwege seit 2018. Es betrachtet die
           baulichen Standard Breite, Führungsform, Oberlfäche und bewertet Maßnahmen zur Vermeidung
@@ -93,6 +96,7 @@ export const About = () => {
           erfüllt", "Nicht erfüllt".
         </p>
       </div>
+
       <div className="text-xs">
         <a href="https://changing-cities.org/impressum">Impressum</a> –{' '}
         <a

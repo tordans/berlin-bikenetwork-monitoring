@@ -6,6 +6,7 @@ import { layers } from './layers'
 
 export const MapSourceMonitoring = () => {
   const params = useStore($searchParams) as SearchParams
+  const fokusFilter = params?.fokus ? ['==', ['get', 'CC_Netzkategorie'], params.fokus] : undefined
 
   return (
     <Source
@@ -14,12 +15,12 @@ export const MapSourceMonitoring = () => {
       attribution="© Geoportal Berlin/Radverkehrsnetz, GB infraVelo GmbH/Radschnellverbindungen, Changing Cities/Monitoring zum Radverkehrsnetz"
     >
       {layers.map((layer) => {
-        let filter = layer.filter
+        let filter = ['all', layer.filter, fokusFilter].filter(Boolean) as any
         if (params?.anzeige === 'wesentliche') {
-          filter = essentialFilterWithStyleFilter(layer.filter) as any
+          filter = essentialFilterWithStyleFilter(layer.filter, fokusFilter) as any
         }
         if (params?.anzeige === 'teilweise') {
-          filter = partialFilterWithStyleFilter(layer.filter) as any
+          filter = partialFilterWithStyleFilter(layer.filter, fokusFilter) as any
         }
         return (
           <Layer
