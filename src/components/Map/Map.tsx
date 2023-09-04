@@ -1,6 +1,6 @@
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
-import { Protocol } from 'pmtiles'
+import * as pmtiles from 'pmtiles'
 import { useEffect } from 'react'
 import ReactMapGl, { NavigationControl } from 'react-map-gl/dist/es5/exports-maplibre.js'
 import { $mapLoaded } from '../store'
@@ -9,7 +9,7 @@ import { MapSourceMonitoring } from './MapSourceMonitoring'
 
 export const Map = () => {
   useEffect(() => {
-    const protocol = new Protocol()
+    const protocol = new pmtiles.Protocol()
     maplibregl.addProtocol('pmtiles', protocol.tile)
     return () => {
       maplibregl.removeProtocol('pmtiles')
