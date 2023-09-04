@@ -1,6 +1,6 @@
 import { useStore } from '@nanostores/react'
 import { length } from '@turf/turf'
-import { useMap } from 'react-map-gl/maplibre'
+import { useMap } from 'react-map-gl/dist/es5/exports-maplibre.js'
 import { $mapLoaded } from '../store'
 
 export const MapData = () => {
