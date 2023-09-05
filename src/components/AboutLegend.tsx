@@ -67,6 +67,7 @@ export const AboutLegend = () => {
                     $searchParams.open({ ...params, ...{ fokus: item.filterKey } })
                     setFokus(item.filterKey as any)
                   }
+                  window.location.reload()
                 }}
               >
                 <div
