@@ -1,5 +1,5 @@
 import { useStore } from '@nanostores/react'
-import * as reactmapgl from 'react-map-gl/maplibre'
+import * as reactmapgl from 'react-map-gl/dist/es5/exports-maplibre.js'
 import { $searchParams, type SearchParams } from '../store'
 import { essentialFilterWithStyleFilter, partialFilterWithStyleFilter } from './filters'
 import { layers } from './layers'
