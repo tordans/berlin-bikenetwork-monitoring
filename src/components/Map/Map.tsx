@@ -90,6 +90,7 @@ export const Map = () => {
   const params = useStore($searchParams) as SearchParams
 
   if (map.current) {
+    console.log('foo', params, layers)
     layers.forEach((layer) => {
       const fokusFilter = params.fokus
         ? ['==', ['get', 'CC_Netzkategorie'], params.fokus]
@@ -101,9 +102,12 @@ export const Map = () => {
       if (params?.anzeige === 'teilweise') {
         filter = partialFilterWithStyleFilter(layer.filter, fokusFilter) as any
       }
+      console.log('asdf', filter)
       // @ts-expect-error
       map.current.setFilter(layer.id, ['==', ['get', 'CC_Netzkategorie'], filter])
+      console.log('foo success')
     })
+    console.log('bar', params, layers)
   }
 
   return (
