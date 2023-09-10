@@ -45,7 +45,6 @@ export const Filter = () => {
               onClick={() => {
                 $searchParams.open({ ...params, ...{ anzeige: button.key } })
                 setSelected(button.key)
-                window.location.reload()
               }}
             >
               {selected === button.key && (
