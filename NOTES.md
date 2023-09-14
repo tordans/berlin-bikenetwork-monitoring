@@ -1,8 +1,5 @@
 NOTES
 
-- WIP: Add Github pages
-  BLOCKER: https://github.com/visgl/react-map-gl/issues/2272
-
 - NEXT: Add Inspect Elements
 
 - NEXT: https://github.com/tailwindlabs/prettier-plugin-tailwindcss
