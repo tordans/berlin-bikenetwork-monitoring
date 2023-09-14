@@ -2,7 +2,7 @@ import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import * as pmtiles from 'pmtiles'
 import { useEffect } from 'react'
-import * as reactmapgl from 'react-map-gl/maplibre'
+import { Map as ReactMapGlMap, NavigationControl } from 'react-map-gl/maplibre'
 import { $mapLoaded } from '../store'
 import { MapSourceBoundaries } from './MapSourceBoundaries'
 import { MapSourceMonitoring } from './MapSourceMonitoring'
@@ -17,7 +17,7 @@ export const Map = () => {
   }, [])
 
   return (
-    <reactmapgl.Map
+    <ReactMapGlMap
       initialViewState={{
         longitude: 13.390386527027175,
         latitude: 52.5180225850377,
@@ -31,8 +31,8 @@ export const Map = () => {
     >
       <MapSourceBoundaries />
       <MapSourceMonitoring />
-      <reactmapgl.NavigationControl showCompass={false} position="top-right" />
+      <NavigationControl showCompass={false} position="top-right" />
       {/* <MapData /> */}
-    </reactmapgl.Map>
+    </ReactMapGlMap>
   )
 }

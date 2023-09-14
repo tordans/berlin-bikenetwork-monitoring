@@ -1,14 +1,14 @@
-import * as reactmapgl from 'react-map-gl/maplibre'
+import { Source, Layer } from 'react-map-gl/maplibre'
 
 export const MapSourceBoundaries = () => {
   return (
-    <reactmapgl.Source
+    <Source
       id="boundaries"
       type="vector"
       tiles={['https://tiles.radverkehrsatlas.de/public.boundaries/{z}/{x}/{y}.pbf']}
       attribution=""
     >
-      <reactmapgl.Layer
+      <Layer
         source="tarmac_boundaries"
         source-layer="public.boundaries"
         type="line"
@@ -20,6 +20,6 @@ export const MapSourceBoundaries = () => {
         }}
         filter={['match', ['get', 'admin_level'], ['9', '10'], true, false]}
       />
-    </reactmapgl.Source>
+    </Source>
   )
 }

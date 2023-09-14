@@ -1,5 +1,5 @@
 import { useStore } from '@nanostores/react'
-import * as reactmapgl from 'react-map-gl/maplibre'
+import { Source, Layer } from 'react-map-gl/maplibre'
 import { $searchParams, type SearchParams } from '../store'
 import { essentialFilterWithStyleFilter, partialFilterWithStyleFilter } from './filters'
 import { layers } from './layers'
@@ -9,7 +9,7 @@ export const MapSourceMonitoring = () => {
   const fokusFilter = params?.fokus ? ['==', ['get', 'CC_Netzkategorie'], params.fokus] : undefined
 
   return (
-    <reactmapgl.Source
+    <Source
       id="monitoring"
       type="vector"
       url="pmtiles://https://atlas-tiles.s3.eu-central-1.amazonaws.com/changing-cities-radnetz-monitoring.pmtiles"
@@ -24,7 +24,7 @@ export const MapSourceMonitoring = () => {
           filter = partialFilterWithStyleFilter(layer.filter, fokusFilter) as any
         }
         return (
-          <reactmapgl.Layer
+          <Layer
             key={layer.id}
             {...(layer as any)}
             source="changing-cities-radnetz-monitoring"
@@ -33,6 +33,6 @@ export const MapSourceMonitoring = () => {
           />
         )
       })}
-    </reactmapgl.Source>
+    </Source>
   )
 }

@@ -1,11 +1,11 @@
 import { useStore } from '@nanostores/react'
 // @ts-expect-error see https://github.com/Turfjs/turf/issues/2414
 import { length } from '@turf/turf'
-import * as reactmapgl from 'react-map-gl/maplibre'
+import { useMap } from 'react-map-gl/maplibre'
 import { $mapLoaded } from '../store'
 
 export const MapData = () => {
-  const { current: mainMap } = reactmapgl.useMap()
+  const { current: mainMap } = useMap()
 
   const mapLoaded = useStore($mapLoaded)
 
