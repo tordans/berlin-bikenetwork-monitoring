@@ -1,11 +1,13 @@
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import * as pmtiles from 'pmtiles'
-import { useEffect } from 'react'
-import { Map as ReactMapGlMap, NavigationControl } from 'react-map-gl/maplibre'
-import { $mapLoaded } from '../store'
+import { useEffect, useState } from 'react'
+import { NavigationControl, Map as ReactMapGlMap } from 'react-map-gl/maplibre'
+import { $clickedMapData, $mapLoaded } from '../store'
+import { MapInspector } from './MapInspector'
 import { MapSourceBoundaries } from './MapSourceBoundaries'
 import { MapSourceMonitoring } from './MapSourceMonitoring'
+import { interactiveLayerIds } from './layers'
 
 export const Map = () => {
   useEffect(() => {
@@ -16,6 +18,8 @@ export const Map = () => {
     }
   }, [])
 
+  const [cursorStyle, setCursorStyle] = useState('grab')
+
   return (
     <ReactMapGlMap
       initialViewState={{
@@ -23,15 +27,23 @@ export const Map = () => {
         latitude: 52.5180225850377,
         zoom: 12,
       }}
-      style={{ width: '100%', height: '100%' }}
       // Style: https://cloud.maptiler.com/maps/dataviz/
       mapStyle="https://api.maptiler.com/maps/dataviz/style.json?key=ur6Yh3ULc6QjatOYBgln"
-      onLoad={() => $mapLoaded.set(true)}
+      style={{ width: '100%', height: '100%' }}
       hash
+      // Set map state for <MapData>:
+      onLoad={() => $mapLoaded.set(true)}
+      // Handle cursor and click:
+      interactiveLayerIds={interactiveLayerIds}
+      cursor={cursorStyle}
+      onMouseEnter={() => setCursorStyle('pointer')}
+      onMouseLeave={() => setCursorStyle('grab')}
+      onClick={(event) => $clickedMapData.set(event.features)}
     >
       <MapSourceBoundaries />
       <MapSourceMonitoring />
       <NavigationControl showCompass={false} position="top-right" />
+      <MapInspector />
       {/* <MapData /> */}
     </ReactMapGlMap>
   )

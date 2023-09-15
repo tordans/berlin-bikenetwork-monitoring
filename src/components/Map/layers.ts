@@ -1,3 +1,5 @@
+export const interactiveLayerIds = ['RSV', 'Vorrangnetz', 'Ergänzungsnetz', 'HVS']
+
 export const layers = [
   {
     id: 'RSV',
