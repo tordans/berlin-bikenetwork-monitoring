@@ -1,16 +1,14 @@
 ---
 import Layout from '../layouts/Layout.astro'
 import { Map } from '../components/Map/Map.tsx'
-import { Filter } from '../components/Map/Filter.tsx'
-import { About } from '../components/About'
+import { Overlay } from '../components/Map/Overlay.tsx'
 ---
 
 <Layout title="Changing Cities Radverkehrs Monitoring">
   <main class="relative flex">
-    <About client:load />
     <div class="relative w-full h-screen">
       <Map client:load />
-      <Filter client:load />
+      <Overlay client:load />
     </div>
   </main>
 </Layout>

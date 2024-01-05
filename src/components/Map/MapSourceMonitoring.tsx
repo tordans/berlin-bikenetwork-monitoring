@@ -1,15 +1,18 @@
 import { useStore } from '@nanostores/react'
-import { Source, Layer } from 'react-map-gl/maplibre'
-import { $clickedMapData, $searchParams, type SearchParams } from '../store'
+import { Layer, Source } from 'react-map-gl/maplibre'
+import { $category, $clickedMapData, $status } from '../store'
 import { essentialFilterWithStyleFilter, partialFilterWithStyleFilter } from './filters'
 import { layers } from './layers'
-import { Fragment } from 'react'
+import { categoryFilters } from './FilterCategories'
 
 export const MapSourceMonitoring = () => {
-  const params = useStore($searchParams) as SearchParams
+  const category = useStore($category)
+  const status = useStore($status)
   const mapData = useStore($clickedMapData)
   const mapDataIds = mapData?.map((feature) => feature.properties?.CC_FID) ?? []
-  const fokusFilter = params?.fokus ? ['==', ['get', 'CC_Netzkategorie'], params.fokus] : undefined
+  const categoryFilter = categoryFilters[category].filterKey
+    ? ['==', ['get', 'CC_Netzkategorie'], categoryFilters[category].filterKey]
+    : undefined
 
   return (
     <Source
@@ -33,12 +36,12 @@ export const MapSourceMonitoring = () => {
       />
 
       {layers.map((layer) => {
-        let filter = ['all', layer.filter, fokusFilter].filter(Boolean) as any
-        if (params?.anzeige === 'wesentliche') {
-          filter = essentialFilterWithStyleFilter(layer.filter, fokusFilter) as any
+        let filter = ['all', layer.filter, categoryFilter].filter(Boolean) as any
+        if (status === 'wesentliche') {
+          filter = essentialFilterWithStyleFilter(layer.filter, categoryFilter) as any
         }
-        if (params?.anzeige === 'teilweise') {
-          filter = partialFilterWithStyleFilter(layer.filter, fokusFilter) as any
+        if (status === 'teilweise') {
+          filter = partialFilterWithStyleFilter(layer.filter, categoryFilter) as any
         }
         return (
           <Layer

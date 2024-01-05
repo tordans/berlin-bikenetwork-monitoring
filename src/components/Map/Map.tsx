@@ -34,11 +34,13 @@ export const Map = () => {
       // Set map state for <MapData>:
       onLoad={() => $mapLoaded.set(true)}
       // Handle cursor and click:
-      interactiveLayerIds={interactiveLayerIds}
       cursor={cursorStyle}
-      onMouseEnter={() => setCursorStyle('pointer')}
-      onMouseLeave={() => setCursorStyle('grab')}
-      onClick={(event) => $clickedMapData.set(event.features)}
+      //
+      // This is disabled for now
+      // interactiveLayerIds={interactiveLayerIds}
+      // onMouseEnter={() => setCursorStyle('pointer')}
+      // onMouseLeave={() => setCursorStyle('grab')}
+      // onClick={(event) => $clickedMapData.set(event.features)}
     >
       <MapSourceBoundaries />
       <MapSourceMonitoring />

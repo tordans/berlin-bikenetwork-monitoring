@@ -1,15 +1,11 @@
-import { createSearchParams } from '@nanostores/router'
-import type { LegendFokusType } from './AboutLegend'
+import type { CategoryKey } from './Map/FilterCategories'
 import { atom } from 'nanostores'
 import type { MapGeoJSONFeature } from 'react-map-gl/maplibre'
+import type { StatusKey } from './Map/FilterStatus'
 
-export type SearchParams = {
-  anzeige: 'alles' | 'wesentliche' | 'teilweise'
-  ueber: 'offen' | undefined
-  fokus: LegendFokusType
-}
-
-export const $searchParams = createSearchParams()
+export const $category = atom<CategoryKey>('alle')
+export const $status = atom<StatusKey>('alles')
 
 export const $mapLoaded = atom(false)
+
 export const $clickedMapData = atom<MapGeoJSONFeature[] | undefined>(undefined)
