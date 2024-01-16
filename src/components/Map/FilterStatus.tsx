@@ -14,9 +14,9 @@ export const FilterStatus = () => {
     {
       name: 'Umgesetzt',
       key: 'wesentliche',
-      km: 26.8,
+      km: 32.7,
     },
-    { name: 'Teilweise umgesetzt', key: 'teilweise', km: 113 },
+    { name: 'Teilweise umgesetzt', key: 'teilweise', km: 135.7 },
   ]
 
   return (
@@ -47,7 +47,7 @@ export const FilterStatus = () => {
           .map((button) => {
             const percent = Number(button.km / baseKm).toLocaleString(undefined, {
               style: 'percent',
-              minimumFractionDigits: 2,
+              minimumFractionDigits: 1,
             })
 
             return (
