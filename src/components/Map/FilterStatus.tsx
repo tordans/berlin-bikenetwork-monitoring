@@ -55,7 +55,7 @@ export const FilterStatus = () => {
                 <p>
                   {category === 'alle' ? (
                     <>
-                      Umgesetzt sind{' '}
+                      Länge:{' '}
                       <span className="py-0.5 px-1.5 rounded bg-ccGray-200 font-medium text-ccOrange-600">
                         {button.km.toLocaleString(undefined, { minimumFractionDigits: 1 })} km
                       </span>
@@ -68,11 +68,10 @@ export const FilterStatus = () => {
                 <p>
                   {button.km !== baseKm && category === 'alle' ? (
                     <>
-                      Das sind{' '}
+                      Anteil an der Ziellänge:{' '}
                       <span className="py-0.5 px-1.5 rounded bg-ccGray-200 font-medium text-ccOrange-600">
                         {percent}
-                      </span>{' '}
-                      der Ziellänge.
+                      </span>
                     </>
                   ) : (
                     <> &nbsp;</>
