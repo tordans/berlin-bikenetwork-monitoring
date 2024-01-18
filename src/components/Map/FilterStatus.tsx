@@ -27,7 +27,7 @@ export const FilterStatus = () => {
             <button
               key={button.key}
               className={twJoin(
-                'rounded px-2 py-1 font-regular ring-1 ring-inset ring-gray-300 focus:outline-none focus:ring-2 focus:ring-ccOrange-600',
+                'rounded px-2 py-1 font-regular ring-1 ring-inset ring-gray-300 focus:outline-none focus:shadow',
                 status === button.key
                   ? 'bg-ccBlue-600 text-white pointer-events-none'
                   : 'cursor-pointer hover:bg-ccGray-100 border border-ccOrange-600 text-ccOrange-600',
