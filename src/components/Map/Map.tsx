@@ -41,6 +41,11 @@ export const Map = () => {
       // onMouseEnter={() => setCursorStyle('pointer')}
       // onMouseLeave={() => setCursorStyle('grab')}
       // onClick={(event) => $clickedMapData.set(event.features)}
+      //
+      // Setting up mobile
+      touchPitch={true}
+      touchZoomRotate={false}
+      scrollZoom={false}
     >
       <MapSourceBoundaries />
       <MapSourceMonitoring />
