@@ -1,13 +1,12 @@
 import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import * as pmtiles from 'pmtiles'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { NavigationControl, Map as ReactMapGlMap } from 'react-map-gl/maplibre'
-import { $clickedMapData, $mapLoaded } from '../store'
+import { $mapLoaded } from '../store'
 import { MapInspector } from './MapInspector'
 import { MapSourceBoundaries } from './MapSourceBoundaries'
 import { MapSourceMonitoring } from './MapSourceMonitoring'
-import { interactiveLayerIds } from './layers'
 
 export const Map = () => {
   useEffect(() => {
@@ -18,7 +17,7 @@ export const Map = () => {
     }
   }, [])
 
-  const [cursorStyle, setCursorStyle] = useState('grab')
+  // const [cursorStyle, setCursorStyle] = useState('grab')
 
   return (
     <ReactMapGlMap
@@ -33,10 +32,10 @@ export const Map = () => {
       hash
       // Set map state for <MapData>:
       onLoad={() => $mapLoaded.set(true)}
-      // Handle cursor and click:
-      cursor={cursorStyle}
       //
       // This is disabled for now
+      // Handle cursor and click:
+      // cursor={cursorStyle}
       // interactiveLayerIds={interactiveLayerIds}
       // onMouseEnter={() => setCursorStyle('pointer')}
       // onMouseLeave={() => setCursorStyle('grab')}
