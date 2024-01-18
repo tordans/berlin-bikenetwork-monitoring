@@ -2,7 +2,7 @@ import { useStore } from '@nanostores/react'
 import { twJoin } from 'tailwind-merge'
 import { $category, $status } from '../store'
 
-export type StatusKey = 'alles' | 'wesentliche' | 'teilweise'
+export type StatusKey = 'alles' | 'umgesetzt' | 'teilweise'
 
 export const FilterStatus = () => {
   const status = useStore($status)
@@ -13,7 +13,7 @@ export const FilterStatus = () => {
     { name: 'Zielnetz', key: 'alles', km: baseKm },
     {
       name: 'Umgesetzt',
-      key: 'wesentliche',
+      key: 'umgesetzt',
       km: 32.7,
     },
     { name: 'Teilweise umgesetzt', key: 'teilweise', km: 135.7 },

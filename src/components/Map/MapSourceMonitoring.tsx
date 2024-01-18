@@ -37,7 +37,7 @@ export const MapSourceMonitoring = () => {
 
       {layers.map((layer) => {
         let filter = ['all', layer.filter, categoryFilter].filter(Boolean) as any
-        if (status === 'wesentliche') {
+        if (status === 'umgesetzt') {
           filter = essentialFilterWithStyleFilter(layer.filter, categoryFilter) as any
         }
         if (status === 'teilweise') {
