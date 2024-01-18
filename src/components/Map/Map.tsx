@@ -2,12 +2,11 @@ import maplibregl from 'maplibre-gl'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import * as pmtiles from 'pmtiles'
 import { useEffect } from 'react'
-import { NavigationControl, Map as ReactMapGlMap } from 'react-map-gl/maplibre'
+import { AttributionControl, NavigationControl, Map as ReactMapGlMap } from 'react-map-gl/maplibre'
 import { $mapLoaded } from '../store'
 import { MapInspector } from './MapInspector'
 import { MapSourceBoundaries } from './MapSourceBoundaries'
 import { MapSourceMonitoring } from './MapSourceMonitoring'
-import { AttributionControl } from 'react-map-gl'
 
 export const Map = () => {
   useEffect(() => {
