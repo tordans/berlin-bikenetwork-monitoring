@@ -7,6 +7,7 @@ import { $mapLoaded } from '../store'
 import { MapInspector } from './MapInspector'
 import { MapSourceBoundaries } from './MapSourceBoundaries'
 import { MapSourceMonitoring } from './MapSourceMonitoring'
+import { AttributionControl } from 'react-map-gl'
 
 export const Map = () => {
   useEffect(() => {
@@ -45,7 +46,9 @@ export const Map = () => {
       touchPitch={true}
       touchZoomRotate={false}
       scrollZoom={false}
+      attributionControl={false}
     >
+      <AttributionControl position="top-left" compact={true} />
       <MapSourceBoundaries />
       <MapSourceMonitoring />
       <NavigationControl showCompass={false} position="top-right" />
