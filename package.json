@@ -17,16 +17,16 @@
     "@astrojs/react": "^3.0.9",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/hind": "^5.0.8",
-    "@fontsource/open-sans": "^5.0.20",
+    "@fontsource/open-sans": "^5.0.22",
     "@headlessui/react": "^2.0.0-alpha.4",
     "@heroicons/react": "^2.1.1",
     "@nanostores/react": "^0.7.1",
-    "@nanostores/router": "^0.11.0",
+    "@nanostores/router": "^0.13.0",
     "@tailwindcss/typography": "^0.5.10",
     "@turf/turf": "^6.5.0",
-    "@types/react": "^18.2.46",
+    "@types/react": "^18.2.48",
     "@types/react-dom": "^18.2.18",
-    "astro": "^4.1.0",
+    "astro": "^4.2.1",
     "maplibre-gl": "^3.6.2",
     "nanostores": "^0.9.5",
     "pmtiles": "^2.11.0",
@@ -34,14 +34,14 @@
     "react-dom": "^18.2.0",
     "react-map-gl": "7.2.0-beta.1",
     "tailwind-merge": "^2.2.0",
-    "tailwindcss": "^3.4.0"
+    "tailwindcss": "^3.4.1"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^6.17.0",
+    "@typescript-eslint/parser": "^6.19.0",
     "eslint": "^8.56.0",
-    "eslint-plugin-astro": "^0.31.0",
+    "eslint-plugin-astro": "^0.31.3",
     "eslint-plugin-jsx-a11y": "^6.8.0",
-    "prettier": "^3.1.1",
-    "prettier-plugin-astro": "^0.12.3"
+    "prettier": "^3.2.4",
+    "prettier-plugin-astro": "^0.13.0"
   }
 }
