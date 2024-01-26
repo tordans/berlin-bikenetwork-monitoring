@@ -1,26 +1,45 @@
 import { useStore } from '@nanostores/react'
 import { twJoin } from 'tailwind-merge'
 import { $category, $status } from '../store'
+import { categoryFilters } from './FilterCategories'
 
 export type StatusKey = 'alles' | 'umgesetzt' | 'teilweise'
+const stats = {
+  alles: {
+    alle: 2_698.5,
+    rsv: 143.8,
+    vorrangnetz: 766.1,
+    ergaenzungsnetz: 1_482.7,
+    hvs: 306.0,
+  },
+  umgesetzt: {
+    alle: 32.7,
+    rsv: 0.5,
+    vorrangnetz: 16.1,
+    ergaenzungsnetz: 14.3,
+    hvs: 1.7,
+  },
+  teilweise: {
+    alle: 135.7,
+    rsv: 7.5,
+    vorrangnetz: 59.1,
+    ergaenzungsnetz: 51.2,
+    hvs: 17.9,
+  },
+} satisfies Record<StatusKey, Record<keyof typeof categoryFilters, number>>
+
+const buttons: { name: string; key: StatusKey }[] = [
+  { name: 'Ziel 2030', key: 'alles' },
+  { name: 'Umgesetzt', key: 'umgesetzt' },
+  { name: 'Teilweise umgesetzt', key: 'teilweise' },
+]
 
 export const FilterStatus = () => {
   const status = useStore($status)
   const category = useStore($category)
 
-  const baseKm = 2698
-  const buttons: { name: string; key: StatusKey; km: number }[] = [
-    { name: 'Zielnetz', key: 'alles', km: baseKm },
-    {
-      name: 'Umgesetzt',
-      key: 'umgesetzt',
-      km: 32.7,
-    },
-    { name: 'Teilweise umgesetzt', key: 'teilweise', km: 135.7 },
-  ]
-
   return (
-    <nav className="mt-3">
+    <nav className="mt-4">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-2">
         {buttons.map((button) => {
           return (
@@ -45,36 +64,34 @@ export const FilterStatus = () => {
         {buttons
           .filter((button) => status === button.key)
           .map((button) => {
-            const percent = Number(button.km / baseKm).toLocaleString(undefined, {
-              style: 'percent',
-              minimumFractionDigits: 1,
-            })
+            const currentKm = stats[button.key][category]
+            const totalKm = stats.alles.alle
 
             return (
-              <div key={button.key} className="mt-3 font-semibold text-center leading-8">
+              <div key={button.key} className="mt-2 font-medium text-center leading-8">
                 <p>
-                  {category === 'alle' ? (
-                    <>
-                      Länge:{' '}
-                      <span className="py-0.5 px-1.5 rounded bg-ccGray-200 font-medium text-ccOrange-600">
-                        {button.km.toLocaleString(undefined, { minimumFractionDigits: 1 })} km
-                      </span>
-                    </>
-                  ) : (
-                    <>&nbsp;</>
-                  )}
+                  Länge{' '}
+                  <span className="px-1.5 rounded bg-ccGray-200 text-ccOrange-600 ml-2 inline-block min-w-36 font-semibold">
+                    {currentKm.toLocaleString(undefined, {
+                      minimumFractionDigits: 1,
+                    })}{' '}
+                    km
+                  </span>
                 </p>
 
-                <p>
-                  {button.km !== baseKm && category === 'alle' ? (
+                <p className="mt-2">
+                  {button.key === 'alles' ? (
+                    <> &nbsp;</>
+                  ) : (
                     <>
                       Anteil an der Ziellänge:{' '}
-                      <span className="py-0.5 px-1.5 rounded bg-ccGray-200 font-medium text-ccOrange-600">
-                        {percent}
+                      <span className="px-1.5 rounded bg-ccGray-200 text-ccOrange-600 ml-2 inline-block min-w-36 font-semibold">
+                        {Number(currentKm / totalKm).toLocaleString(undefined, {
+                          style: 'percent',
+                          minimumFractionDigits: 1,
+                        })}
                       </span>
                     </>
-                  ) : (
-                    <> &nbsp;</>
                   )}
                 </p>
               </div>
