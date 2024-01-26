@@ -81,7 +81,20 @@ export const FilterStatus = () => {
 
                 <p className="mt-2">
                   {button.key === 'alles' ? (
-                    <> &nbsp;</>
+                    category === 'alle' ? (
+                      <> &nbsp;</>
+                    ) : (
+                      <>
+                        Anteil an Gesamt:
+                        <span className="px-1.5 rounded bg-ccGray-200 text-ccOrange-600 ml-2 inline-block min-w-36 font-semibold">
+                          {/* This span is a duplicate of what is below… */}
+                          {Number(currentKm / totalKm).toLocaleString(undefined, {
+                            style: 'percent',
+                            minimumFractionDigits: 1,
+                          })}
+                        </span>
+                      </>
+                    )
                   ) : (
                     <>
                       Anteil an der Ziellänge:{' '}
