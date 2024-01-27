@@ -2,6 +2,7 @@ import { useStore } from '@nanostores/react'
 import { twJoin } from 'tailwind-merge'
 import { $category, $status } from '../store'
 import { categoryFilters } from './FilterCategories'
+import { FilterStatusExplainer } from './FilterStatusExplainer'
 
 export type StatusKey = 'alles' | 'umgesetzt' | 'teilweise'
 const stats = {
@@ -28,10 +29,20 @@ const stats = {
   },
 } satisfies Record<StatusKey, Record<keyof typeof categoryFilters, number>>
 
-const buttons: { name: string; key: StatusKey }[] = [
-  { name: 'Ziel 2030', key: 'alles' },
-  { name: 'Umgesetzt', key: 'umgesetzt' },
-  { name: 'Teilweise umgesetzt', key: 'teilweise' },
+export const statusFilters: { name: string; key: StatusKey; explainer: string | undefined }[] = [
+  { name: 'Ziel 2030', key: 'alles', explainer: undefined },
+  {
+    name: 'Umgesetzt',
+    key: 'umgesetzt',
+    explainer:
+      'Radverkehrsanlagen, die auf einem hohen Qualitätsniveau erneuert wurden und die baulichen Standards erfüllen.',
+  },
+  {
+    name: 'Teilweise umgesetzt',
+    key: 'teilweise',
+    explainer:
+      'Radverkehrsanlagen, die mindestens auf einem niedrigen Qualitätsniveau erneuert wurden, teilweise aber Standards nicht erfüllen oder lückenhaft sind.',
+  },
 ]
 
 export const FilterStatus = () => {
@@ -41,7 +52,7 @@ export const FilterStatus = () => {
   return (
     <nav className="mt-4">
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-2">
-        {buttons.map((button) => {
+        {statusFilters.map((button) => {
           return (
             <button
               key={button.key}
@@ -60,8 +71,10 @@ export const FilterStatus = () => {
           )
         })}
       </div>
-      <div>
-        {buttons
+      <section className="relative">
+        <FilterStatusExplainer />
+
+        {statusFilters
           .filter((button) => status === button.key)
           .map((button) => {
             const currentKm = stats[button.key][category]
@@ -110,7 +123,7 @@ export const FilterStatus = () => {
               </div>
             )
           })}
-      </div>
+      </section>
     </nav>
   )
 }

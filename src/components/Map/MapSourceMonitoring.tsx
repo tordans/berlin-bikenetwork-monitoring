@@ -1,9 +1,9 @@
 import { useStore } from '@nanostores/react'
 import { Layer, Source } from 'react-map-gl/maplibre'
 import { $category, $clickedMapData, $status } from '../store'
+import { categoryFilters } from './FilterCategories'
 import { essentialFilterWithStyleFilter, partialFilterWithStyleFilter } from './filters'
 import { layers } from './layers'
-import { categoryFilters } from './FilterCategories'
 
 export const MapSourceMonitoring = () => {
   const category = useStore($category)
