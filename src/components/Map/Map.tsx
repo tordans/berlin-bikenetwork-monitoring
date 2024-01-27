@@ -46,6 +46,8 @@ export const Map = () => {
       touchZoomRotate={false}
       scrollZoom={false}
       attributionControl={false}
+      // See https://github.com/tordans/berlin-bikenetwork-monitoring/issues/1
+      RTLTextPlugin={undefined}
     >
       <AttributionControl position="top-left" compact={true} />
       <MapSourceBoundaries />
