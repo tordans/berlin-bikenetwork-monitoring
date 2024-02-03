@@ -8,7 +8,7 @@ export const MapInspector: React.FC = () => {
   if (!clickedMapData || !clickedMapData.length) return null
 
   return (
-    <section className="absolute sm:inset-x-auto sm:inset-y-2.5 sm:right-2.5 sm:w-96 rounded-lg shadow-xl overflow-y-auto bg-ccBlue-900 p-4 z-50 text-ccBlue-50 inset-x-1 bottom-1">
+    <section className="absolute sm:inset-x-auto sm:inset-y-2.5 sm:right-2.5 sm:w-96 rounded-lg shadow-xl overflow-y-auto bg-ccBlue-900 sm:p-4 z-50 text-ccBlue-50 inset-x-1 bottom-1">
       <button
         onClick={() => $clickedMapData.set(undefined)}
         className="absolute text-ccBlue-900 z-10 top-2.5 right-2.5 bg-white rounded-full p-1.5 hover:shadow-lg hover:bg-ccBlue-50"

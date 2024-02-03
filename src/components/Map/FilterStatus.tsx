@@ -50,8 +50,8 @@ export const FilterStatus = () => {
   const category = useStore($category)
 
   return (
-    <nav className="mt-4">
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-2">
+    <nav className="mt-1 sm:mt-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-1 md:gap-3 sm:gap-2">
         {statusFilters.map((button) => {
           return (
             <button
@@ -84,7 +84,7 @@ export const FilterStatus = () => {
               <div key={button.key} className="mt-2 font-medium text-center leading-8">
                 <p>
                   Länge{' '}
-                  <span className="px-1.5 rounded bg-ccGray-200 text-ccOrange-600 ml-2 inline-block min-w-36 font-semibold">
+                  <span className="px-1.5 rounded bg-ccGray-200 text-ccOrange-600 ml-2 inline-block min-w-max sm:min-w-36 font-semibold">
                     {currentKm.toLocaleString(undefined, {
                       minimumFractionDigits: 1,
                     })}{' '}
@@ -99,7 +99,7 @@ export const FilterStatus = () => {
                     ) : (
                       <>
                         Anteil an Gesamt:
-                        <span className="px-1.5 rounded bg-ccGray-200 text-ccOrange-600 ml-2 inline-block min-w-36 font-semibold">
+                        <span className="px-1.5 rounded bg-ccGray-200 text-ccOrange-600 ml-2 inline-block min-w-max sm:min-w-36 font-semibold">
                           {/* This span is a duplicate of what is below… */}
                           {Number(currentKm / totalKm).toLocaleString(undefined, {
                             style: 'percent',
@@ -111,7 +111,7 @@ export const FilterStatus = () => {
                   ) : (
                     <>
                       Anteil an der Ziellänge:{' '}
-                      <span className="px-1.5 rounded bg-ccGray-200 text-ccOrange-600 ml-2 inline-block min-w-36 font-semibold">
+                      <span className="px-1.5 rounded bg-ccGray-200 text-ccOrange-600 ml-2 inline-block min-w-max sm:min-w-36 font-semibold">
                         {Number(currentKm / totalKm).toLocaleString(undefined, {
                           style: 'percent',
                           minimumFractionDigits: 1,
