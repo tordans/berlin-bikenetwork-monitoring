@@ -8,12 +8,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "type-check": "tsc --noEmit --skipLibCheck",
     "lint": "eslint --ext .js,.astro src",
     "format": "prettier --write .",
-    "check": "npm run lint && npm run format",
+    "check": "npm run type-check && npm run lint && npm run format",
     "updatePackages": "npx taze major --write"
   },
   "dependencies": {
+    "@astrojs/check": "^0.4.1",
     "@astrojs/react": "^3.0.9",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/hind": "^5.0.8",
@@ -24,9 +26,9 @@
     "@nanostores/router": "^0.13.0",
     "@tailwindcss/typography": "^0.5.10",
     "@turf/turf": "^6.5.0",
-    "@types/react": "^18.2.48",
+    "@types/react": "^18.2.52",
     "@types/react-dom": "^18.2.18",
-    "astro": "^4.2.6",
+    "astro": "^4.3.2",
     "maplibre-gl": "^3.6.2",
     "nanostores": "^0.9.5",
     "pmtiles": "^2.11.0",
@@ -34,12 +36,13 @@
     "react-dom": "^18.2.0",
     "react-map-gl": "7.2.0-beta.1",
     "tailwind-merge": "^2.2.1",
-    "tailwindcss": "^3.4.1"
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3"
   },
   "devDependencies": {
-    "@typescript-eslint/parser": "^6.19.1",
+    "@typescript-eslint/parser": "^6.20.0",
     "eslint": "^8.56.0",
-    "eslint-plugin-astro": "^0.31.3",
+    "eslint-plugin-astro": "^0.31.4",
     "eslint-plugin-jsx-a11y": "^6.8.0",
     "prettier": "^3.2.4",
     "prettier-plugin-astro": "^0.13.0"
