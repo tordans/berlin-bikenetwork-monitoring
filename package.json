@@ -12,7 +12,7 @@
     "lint": "eslint --ext .js,.astro src",
     "format": "prettier --write .",
     "check": "npm run type-check && npm run lint && npm run format",
-    "updatePackages": "npx taze major --write"
+    "updatePackages": "nvm use && npx taze major --write && mpm install"
   },
   "dependencies": {
     "@astrojs/check": "^0.4.1",
