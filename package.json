@@ -20,7 +20,7 @@
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/hind": "^5.0.8",
     "@fontsource/open-sans": "^5.0.22",
-    "@headlessui/react": "^2.0.0-alpha.4",
+    "@headlessui/react": "^1.7.18",
     "@heroicons/react": "^2.1.1",
     "@nanostores/react": "^0.7.1",
     "@nanostores/router": "^0.13.0",
