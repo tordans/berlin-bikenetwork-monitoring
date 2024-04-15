@@ -5,7 +5,6 @@ import { useEffect } from 'react'
 import { AttributionControl, NavigationControl, Map as ReactMapGlMap } from 'react-map-gl/maplibre'
 import { $mapLoaded } from '../store'
 import { MapInspector } from './MapInspector'
-import { MapSourceBoundaries } from './MapSourceBoundaries'
 import { MapSourceMonitoring } from './MapSourceMonitoring'
 
 export const Map = () => {
@@ -50,7 +49,7 @@ export const Map = () => {
       RTLTextPlugin={undefined}
     >
       <AttributionControl position="top-left" compact={true} />
-      <MapSourceBoundaries />
+      {/* <MapSourceBoundaries /> */}
       <MapSourceMonitoring />
       <NavigationControl showCompass={false} position="top-right" />
       <MapInspector />
