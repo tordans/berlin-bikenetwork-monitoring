@@ -9,3 +9,8 @@ https://changing-cities.org/kampagnen/das-ist-kein/
 ## Develpment
 
 This Projects uses AstroJS with interactive React Components. The Maps are build using ReactMapGl. The styling is done using Tailwind CSS. State is stored in the URL with nanostores.
+
+## Data update
+
+- Map data: pmtiles are using the static data system from https://github.com/FixMyBerlin/atlas-app/ which provides us with a pmtile URL
+- Numbers need to be updated in [Map/FilterStatus.tsx](.src/components/Map/FilterStatus.tsx)
