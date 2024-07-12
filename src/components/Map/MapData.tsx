@@ -1,5 +1,4 @@
 import { useStore } from '@nanostores/react'
-// @ts-expect-error see https://github.com/Turfjs/turf/issues/2414
 import { length } from '@turf/turf'
 import { useMap } from 'react-map-gl/maplibre'
 import { $mapLoaded } from '../store'
@@ -17,11 +16,11 @@ export const MapData = () => {
     ?.filter((feature) => feature.source === 'monitoring')
     ?.forEach((feature) => {
       lengthByGroup[feature.layer.id] ||= 0
-      lengthByGroup[feature.layer.id] += length(feature.geometry)
+      lengthByGroup[feature.layer.id] += length(feature)
     })
   lengthByGroup['Radnetz'] = Object.values(lengthByGroup).reduce((a, b) => a + b, 0)
 
-  console.log('MapData:', features?.at(0), lengthByGroup)
+  // console.log('MapData:', features?.at(0), lengthByGroup)
 
   return null
 }
