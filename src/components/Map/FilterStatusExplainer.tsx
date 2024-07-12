@@ -13,7 +13,7 @@ export const FilterStatusExplainer = () => {
     <>
       <button
         className={twJoin(
-          'absolute top-0 right-0 bg-white text-ccOrange-600 rounded-full w-6 h-6 flex items-center justify-center text-xs font-semibold hover:shadow hover:bg-ccGray-100',
+          'absolute right-0 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-semibold text-ccOrange-600 hover:bg-ccGray-100 hover:shadow',
         )}
         onClick={() => $showExplainer.set(!showExplainer)}
       >
@@ -23,7 +23,7 @@ export const FilterStatusExplainer = () => {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
             fill="currentColor"
-            className="w-4 h-4"
+            className="h-4 w-4"
           >
             <path
               fill-rule="evenodd"
@@ -37,7 +37,7 @@ export const FilterStatusExplainer = () => {
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 16 16"
             fill="currentColor"
-            className="w-4 h-4"
+            className="h-4 w-4"
           >
             <path
               fill-rule="evenodd"
@@ -49,7 +49,7 @@ export const FilterStatusExplainer = () => {
         <span className="sr-only">Erklärung anzeigen</span>
       </button>
       {showExplainer ? (
-        <p className="max-w-[30rem] mt-2 text-sm leading-tight mr-8">{explainer}</p>
+        <p className="mr-8 mt-2 max-w-[30rem] text-sm leading-tight">{explainer}</p>
       ) : (
         ''
       )}

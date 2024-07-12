@@ -3,8 +3,8 @@ import { FilterStatus } from './FilterStatus'
 
 export const Overlay = () => {
   return (
-    <section className="absolute bottom-2 sm:bottom-10 inset-x-0 items-center justify-center flex">
-      <div className="bg-white shadow-lg p-3">
+    <section className="absolute inset-x-0 bottom-2 flex items-center justify-center sm:bottom-10">
+      <div className="bg-white p-3 shadow-lg">
         <FilterCategories />
         <FilterStatus />
       </div>

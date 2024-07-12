@@ -59,8 +59,8 @@ export const FilterCategories = () => {
         return (
           <>
             <Listbox.Label className="sr-only">Netzkategorie filtern</Listbox.Label>
-            <div className="relative hidden sm:flex sm:mt-2 items-center justify-center">
-              <Listbox.Button className="relative cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:outline-none focus:shadow sm:text-sm sm:leading-6">
+            <div className="relative hidden items-center justify-center sm:mt-2 sm:flex">
+              <Listbox.Button className="relative cursor-default rounded-md bg-white py-1.5 pl-3 pr-10 text-left text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 focus:shadow focus:outline-none sm:text-sm sm:leading-6">
                 <span className="block truncate">{categoryFilters[category].name}</span>
                 <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
                   <ChevronUpDownIcon className="h-5 w-5 text-gray-400" aria-hidden="true" />
@@ -81,8 +81,8 @@ export const FilterCategories = () => {
                       className={({ active }) =>
                         twJoin(
                           active
-                            ? 'bg-gray-100 text-white font-semibold'
-                            : 'text-gray-900 font-normal',
+                            ? 'bg-gray-100 font-semibold text-white'
+                            : 'font-normal text-gray-900',
                           'relative cursor-default select-none py-2 pl-3 pr-9',
                         )
                       }
@@ -98,12 +98,12 @@ export const FilterCategories = () => {
                           >
                             <div
                               className={twJoin(
-                                'flex gap-2 items-center text-sm hover:text-ccBlue-600 text-left leading-tight py-1',
+                                'flex items-center gap-2 py-1 text-left text-sm leading-tight hover:text-ccBlue-600',
                                 selected ? 'font-bold text-ccBlue-600' : 'font-normal',
                               )}
                             >
                               <div
-                                className="rounded-full w-4 h-2 border border-transparent flex-none"
+                                className="h-2 w-4 flex-none rounded-full border border-transparent"
                                 style={{
                                   backgroundColor: filter.color,
                                   borderColor: filter.borderColor,
