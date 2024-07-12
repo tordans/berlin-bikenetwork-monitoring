@@ -8,24 +8,24 @@ export type StatusKey = 'alles' | 'umgesetzt' | 'teilweise'
 const stats = {
   alles: {
     rsv: 143.8,
-    vorrangnetz: 766.1,
-    ergaenzungsnetz: 1_482.7,
-    hvs: 306.0,
-    alle: 2_698.5,
+    vorrangnetz: 770.0,
+    ergaenzungsnetz: 1_492.7,
+    hvs: 393.3,
+    alle: 2_699.8,
   },
   umgesetzt: {
     rsv: 0.5,
-    vorrangnetz: 16.1,
-    ergaenzungsnetz: 14.3,
-    hvs: 1.7,
-    alle: 32.7,
+    vorrangnetz: 21.3,
+    ergaenzungsnetz: 16.4,
+    hvs: 1.6,
+    alle: 39.9,
   },
   teilweise: {
-    rsv: 7.5,
-    vorrangnetz: 59.1,
-    ergaenzungsnetz: 51.2,
-    hvs: 17.9,
-    alle: 135.7,
+    rsv: 7.7,
+    vorrangnetz: 66.1,
+    ergaenzungsnetz: 56.2,
+    hvs: 16.4,
+    alle: 146.3,
   },
 } satisfies Record<StatusKey, Record<keyof typeof categoryFilters, number>>
 
