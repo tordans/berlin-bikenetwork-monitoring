@@ -10,7 +10,7 @@ const stats = {
     rsv: 143.8,
     vorrangnetz: 770.0,
     ergaenzungsnetz: 1_492.7,
-    hvs: 393.3,
+    hvs: 293.3,
     alle: 2_699.8,
   },
   umgesetzt: {
@@ -21,7 +21,7 @@ const stats = {
     alle: 39.9,
   },
   teilweise: {
-    rsv: 7.7,
+    rsv: 7.6,
     vorrangnetz: 66.1,
     ergaenzungsnetz: 56.2,
     hvs: 16.4,

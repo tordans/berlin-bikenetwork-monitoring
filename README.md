@@ -13,4 +13,5 @@ This Projects uses AstroJS with interactive React Components. The Maps are build
 ## Data update
 
 - Map data: pmtiles are using the static data system from https://github.com/FixMyBerlin/atlas-app/ which provides us with a pmtile URL
-- Numbers need to be updated in [Map/FilterStatus.tsx](.src/components/Map/FilterStatus.tsx)
+- Update date in [Map/MapSourceMonitoring.tsx](./src/components/Map/MapSourceMonitoring.tsx)
+- Numbers need to be updated in [Map/FilterStatus.tsx](./src/components/Map/FilterStatus.tsx)
