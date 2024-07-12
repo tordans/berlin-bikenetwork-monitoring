@@ -13,7 +13,7 @@ export const FilterStatusExplainer = () => {
     <>
       <button
         className={twJoin(
-          'text-ccOrange2024-600 absolute right-0 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-semibold hover:bg-ccGray-100 hover:shadow',
+          'absolute right-0 top-0 flex h-6 w-6 items-center justify-center rounded-full bg-white text-xs font-semibold text-ccOrange-600 hover:bg-ccGray-100 hover:shadow',
         )}
         onClick={() => $showExplainer.set(!showExplainer)}
       >

@@ -104,8 +104,8 @@ export const FilterCategories = () => {
                           >
                             <div
                               className={twJoin(
-                                'flex items-center gap-2 py-1 text-left text-sm leading-tight hover:text-ccBlue2024-900',
-                                selected ? 'font-bold text-ccBlue2024-900' : 'font-normal',
+                                'flex items-center gap-2 py-1 text-left text-sm leading-tight hover:text-ccBlue-900',
+                                selected ? 'font-bold text-ccBlue-900' : 'font-normal',
                               )}
                             >
                               <div

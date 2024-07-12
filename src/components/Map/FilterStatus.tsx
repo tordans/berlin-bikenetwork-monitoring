@@ -57,10 +57,10 @@ export const FilterStatus = () => {
             <button
               key={button.key}
               className={twJoin(
-                'font-regular rounded px-2 py-1 ring-1 ring-inset ring-gray-300 focus:shadow focus:outline-none',
+                'font-regular rounded px-2 py-1 ring-1 ring-inset focus:shadow focus:outline-none',
                 status === button.key
-                  ? 'pointer-events-none bg-ccBlue2024-900 text-white'
-                  : 'border-ccOrange2024-600 text-ccOrange2024-600 cursor-pointer border hover:bg-ccGray-100',
+                  ? 'pointer-events-none bg-ccBlue-900 text-white ring-ccBlue-950'
+                  : 'cursor-pointer border border-ccOrange-600 text-ccOrange-600 ring-gray-300 hover:bg-ccGray-100',
               )}
               onClick={() => {
                 $status.set(button.key)
@@ -84,7 +84,7 @@ export const FilterStatus = () => {
               <div key={button.key} className="mt-2 text-center font-medium leading-8">
                 <p>
                   Länge{' '}
-                  <span className="text-ccOrange2024-600 ml-2 inline-block min-w-max rounded bg-ccGray-200 px-1.5 font-semibold sm:min-w-36">
+                  <span className="ml-2 inline-block min-w-max rounded bg-ccGray-200 px-1.5 font-semibold text-ccOrange-600 sm:min-w-36">
                     {currentKm.toLocaleString(undefined, {
                       minimumFractionDigits: 1,
                     })}{' '}
@@ -99,7 +99,7 @@ export const FilterStatus = () => {
                     ) : (
                       <>
                         Anteil an Gesamt:
-                        <span className="text-ccOrange2024-600 ml-2 inline-block min-w-max rounded bg-ccGray-200 px-1.5 font-semibold sm:min-w-36">
+                        <span className="ml-2 inline-block min-w-max rounded bg-ccGray-200 px-1.5 font-semibold text-ccOrange-600 sm:min-w-36">
                           {/* This span is a duplicate of what is below… */}
                           {Number(currentKm / totalKm).toLocaleString(undefined, {
                             style: 'percent',
@@ -111,7 +111,7 @@ export const FilterStatus = () => {
                   ) : (
                     <>
                       Anteil an der Ziellänge:{' '}
-                      <span className="text-ccOrange2024-600 ml-2 inline-block min-w-max rounded bg-ccGray-200 px-1.5 font-semibold sm:min-w-36">
+                      <span className="ml-2 inline-block min-w-max rounded bg-ccGray-200 px-1.5 font-semibold text-ccOrange-600 sm:min-w-36">
                         {Number(currentKm / totalKm).toLocaleString(undefined, {
                           style: 'percent',
                           minimumFractionDigits: 1,

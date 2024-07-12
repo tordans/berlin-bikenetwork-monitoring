@@ -11,7 +11,7 @@ module.exports = {
       colors: {
         ccTypo: '#192738',
         // Thanks to https://uicolors.app/create
-        ccOrange2024: {
+        ccOrange: {
           50: '#fff2f1',
           100: '#ffe3e0',
           200: '#ffccc7',
@@ -24,7 +24,7 @@ module.exports = {
           900: '#842118',
           950: '#480d07',
         },
-        ccBlue2024: {
+        ccBlue: {
           50: '#edf0ff',
           100: '#dee4ff',
           200: '#c3ccff',
