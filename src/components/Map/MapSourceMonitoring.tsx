@@ -18,9 +18,10 @@ export const MapSourceMonitoring = () => {
     <Source
       id="monitoring"
       type="vector"
-      url="pmtiles://https://tiles.osm-berlin.org/berlin-bikenetwork-monitoring/changing-cities-radnetz-monitoring.pmtiles"
-      // url="pmtiles://https://atlas-tiles.s3.eu-central-1.amazonaws.com/changing-cities-radnetz-monitoring.pmtiles"
-      attribution={`© <span class="sm:hidden">CC</span><span class="hidden sm:inline">Changing Cities</span>/Monitoring zum Radverkehrsnetz (<span class="hidden md:inline">Stand </span>30.06.2024), Geoportal Berlin/Radverkehrsnetz, GB infraVelo<span class="hidden md:inline"> GmbH</span>/Radschnellverbindungen`}
+      // Can be updated by @tordans
+      // Data at https://github.com/FixMyBerlin/atlas-static-data/tree/main/geojson/region-berlin/changing-cities-radnetz-monitoring
+      url="pmtiles://https://radverkehrsatlas.de/api/uploads/changing-cities-radnetz-monitoring"
+      attribution={`© <span class="sm:hidden">CC</span><span class="hidden sm:inline">Changing Cities</span>/Monitoring zum Radverkehrsnetz (<span class="hidden md:inline">Stand </span>31.12.2024), Geoportal Berlin/Radverkehrsnetz, GB infraVelo<span class="hidden md:inline"> GmbH</span>/Radschnellverbindungen`}
     >
       <Layer
         key="selected"
