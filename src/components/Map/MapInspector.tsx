@@ -1,8 +1,7 @@
 import { useStore } from '@nanostores/react'
-import React from 'react'
 import { $clickedMapData } from '../store'
 
-export const MapInspector: React.FC = () => {
+export const MapInspector = () => {
   const clickedMapData = useStore($clickedMapData)
 
   if (!clickedMapData || !clickedMapData.length) return null
