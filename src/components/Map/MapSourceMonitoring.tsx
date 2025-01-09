@@ -1,6 +1,7 @@
 import { useStore } from '@nanostores/react'
 import { Layer, Source } from 'react-map-gl/maplibre'
 import { $category, $clickedMapData, $status } from '../store'
+import { updateDate } from './data/updateDate.const'
 import { categoryFilters } from './FilterCategories'
 import { essentialFilterWithStyleFilter, partialFilterWithStyleFilter } from './filters'
 import { layers } from './layers'
@@ -21,7 +22,7 @@ export const MapSourceMonitoring = () => {
       // Can be updated by @tordans
       // Data at https://github.com/FixMyBerlin/atlas-static-data/tree/main/geojson/region-berlin/changing-cities-radnetz-monitoring
       url="pmtiles://https://radverkehrsatlas.de/api/uploads/changing-cities-radnetz-monitoring"
-      attribution={`© <span class="sm:hidden">CC</span><span class="hidden sm:inline">Changing Cities</span>/Monitoring zum Radverkehrsnetz (<span class="hidden md:inline">Stand </span>31.12.2024), Geoportal Berlin/Radverkehrsnetz, GB infraVelo<span class="hidden md:inline"> GmbH</span>/Radschnellverbindungen`}
+      attribution={`© <span class="sm:hidden">CC</span><span class="hidden sm:inline">Changing Cities</span>/Monitoring zum Radverkehrsnetz (<span class="hidden md:inline">Stand </span>${updateDate}), Geoportal Berlin/Radverkehrsnetz, GB infraVelo<span class="hidden md:inline"> GmbH</span>/Radschnellverbindungen`}
     >
       <Layer
         key="selected"

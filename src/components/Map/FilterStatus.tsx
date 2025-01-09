@@ -1,33 +1,8 @@
 import { useStore } from '@nanostores/react'
 import { twJoin } from 'tailwind-merge'
 import { $category, $status } from '../store'
-import { categoryFilters } from './FilterCategories'
 import { FilterStatusExplainer } from './FilterStatusExplainer'
-
-export type StatusKey = 'alles' | 'umgesetzt' | 'teilweise'
-const stats = {
-  alles: {
-    rsv: 143.8,
-    vorrangnetz: 770.0,
-    ergaenzungsnetz: 1_492.7,
-    hvs: 293.3,
-    alle: 2_699.8,
-  },
-  umgesetzt: {
-    rsv: 0.5,
-    vorrangnetz: 21.3,
-    ergaenzungsnetz: 16.4,
-    hvs: 1.6,
-    alle: 39.9,
-  },
-  teilweise: {
-    rsv: 7.6,
-    vorrangnetz: 66.1,
-    ergaenzungsnetz: 56.2,
-    hvs: 16.4,
-    alle: 146.3,
-  },
-} satisfies Record<StatusKey, Record<keyof typeof categoryFilters, number>>
+import { type StatusKey, stats } from './data/stats.const'
 
 export const statusFilters: { name: string; key: StatusKey; explainer: string | undefined }[] = [
   { name: 'Ziel 2030', key: 'alles', explainer: undefined },
