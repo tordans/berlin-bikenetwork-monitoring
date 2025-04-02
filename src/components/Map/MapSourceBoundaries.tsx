@@ -5,7 +5,7 @@ export const MapSourceBoundaries = () => {
     <Source
       id="boundaries"
       type="vector"
-      tiles={['https://tiles.radverkehrsatlas.de/boundaries/{z}/{x}/{y}']}
+      tiles={['https://tiles.tilda-geo.de/boundaries/{z}/{x}/{y}']}
       attribution=""
     >
       <Layer

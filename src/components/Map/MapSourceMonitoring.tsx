@@ -21,7 +21,7 @@ export const MapSourceMonitoring = () => {
       type="vector"
       // Can be updated by @tordans
       // Data at https://github.com/FixMyBerlin/atlas-static-data/tree/main/geojson/region-berlin/changing-cities-radnetz-monitoring
-      url="pmtiles://https://radverkehrsatlas.de/api/uploads/changing-cities-radnetz-monitoring"
+      url="pmtiles://https://tilda-geo.de/api/uploads/changing-cities-radnetz-monitoring"
       attribution={`© <span class="sm:hidden">CC</span><span class="hidden sm:inline">Changing Cities</span>/Monitoring zum Radverkehrsnetz (<span class="hidden md:inline">Stand </span>${updateDate}), Geoportal Berlin/Radverkehrsnetz, GB infraVelo<span class="hidden md:inline"> GmbH</span>/Radschnellverbindungen`}
     >
       <Layer
