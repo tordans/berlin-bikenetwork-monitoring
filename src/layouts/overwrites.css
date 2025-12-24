@@ -1,3 +1,5 @@
+@reference "../styles/global.css";
+
 .maplibregl-ctrl-attrib-inner {
   @apply leading-4 sm:leading-snug;
 }

@@ -1,7 +1,7 @@
 import { atom } from 'nanostores'
 import type { MapGeoJSONFeature } from 'react-map-gl/maplibre'
 import type { CategoryKey } from './Map/FilterCategories'
-import type { StatusKey } from './Map/stats.const'
+import type { StatusKey } from './Map/data/stats.const'
 
 export const $category = atom<CategoryKey>('alle')
 export const $status = atom<StatusKey>('alles')
