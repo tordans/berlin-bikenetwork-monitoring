@@ -3,7 +3,14 @@ import tailwindcss from '@tailwindcss/vite'
 import { defineConfig } from 'vite'
 
 // https://vite.dev/config/
-export default defineConfig({
-  base: import.meta.env.DEV ? '/' : '/berlin-bikenetwork-monitoring',
-  plugins: [react(), tailwindcss()],
-})
+export default defineConfig(({ mode }) => ({
+  base: mode === 'development' ? '/' : '/berlin-bikenetwork-monitoring',
+  plugins: [
+    react({
+      babel: {
+        plugins: ['babel-plugin-react-compiler'],
+      },
+    }),
+    tailwindcss(),
+  ],
+}))
