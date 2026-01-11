@@ -1,28 +1,13 @@
-import { useStore } from '@nanostores/react'
 import { twJoin } from 'tailwind-merge'
-import { $category, $status } from '../store'
+import { useAppActions, useCategory, useStatus } from '../store'
+import { stats } from './data/stats.const'
+import { statusFilters } from './data/statusFilters.const'
 import { FilterStatusExplainer } from './FilterStatusExplainer'
-import { type StatusKey, stats } from './data/stats.const'
-
-export const statusFilters: { name: string; key: StatusKey; explainer: string | undefined }[] = [
-  { name: 'Ziel 2030', key: 'alles', explainer: undefined },
-  {
-    name: 'Umgesetzt',
-    key: 'umgesetzt',
-    explainer:
-      'Radverkehrsanlagen, die auf einem hohen Qualitätsniveau erneuert wurden und die baulichen Standards erfüllen.',
-  },
-  {
-    name: 'Teilweise umgesetzt',
-    key: 'teilweise',
-    explainer:
-      'Radverkehrsanlagen, die mindestens auf einem niedrigen Qualitätsniveau erneuert wurden, teilweise aber Standards nicht erfüllen oder lückenhaft sind.',
-  },
-]
 
 export const FilterStatus = () => {
-  const status = useStore($status)
-  const category = useStore($category)
+  const status = useStatus()
+  const category = useCategory()
+  const { setStatus } = useAppActions()
 
   return (
     <nav className="mt-1 sm:mt-4">
@@ -38,7 +23,7 @@ export const FilterStatus = () => {
                   : 'border-ccOrange-600 text-ccOrange-600 hover:bg-ccGray-100 cursor-pointer border ring-gray-300',
               )}
               onClick={() => {
-                $status.set(button.key)
+                setStatus(button.key)
               }}
             >
               {button.name}

@@ -3,11 +3,13 @@ import 'maplibre-gl/dist/maplibre-gl.css'
 import { Protocol } from 'pmtiles'
 import { useEffect } from 'react'
 import { AttributionControl, NavigationControl, Map as ReactMapGlMap } from 'react-map-gl/maplibre'
-import { $mapLoaded } from '../store'
+import { useAppActions } from '../store'
 import { MapInspector } from './MapInspector'
 import { MapSourceMonitoring } from './MapSourceMonitoring'
 
 export const Map = () => {
+  const { setMapLoaded } = useAppActions()
+
   useEffect(() => {
     const protocol = new Protocol()
     maplibregl.addProtocol('pmtiles', protocol.tile)
@@ -30,7 +32,7 @@ export const Map = () => {
       style={{ width: '100%', height: '100%' }}
       hash
       // Set map state for <MapData>:
-      onLoad={() => $mapLoaded.set(true)}
+      onLoad={() => setMapLoaded(true)}
       //
       // This is disabled for now
       // Handle cursor and click:

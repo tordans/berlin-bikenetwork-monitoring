@@ -1,12 +1,11 @@
-import { useStore } from '@nanostores/react'
 import { length } from '@turf/turf'
 import { useMap } from 'react-map-gl/maplibre'
-import { $mapLoaded } from '../store'
+import { useMapLoaded } from '../store'
 
 export const MapData = () => {
   const { current: mainMap } = useMap()
 
-  const mapLoaded = useStore($mapLoaded)
+  const mapLoaded = useMapLoaded()
 
   if (!mapLoaded) return null
 

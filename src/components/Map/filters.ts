@@ -1,4 +1,9 @@
-export const essentialFilterWithStyleFilter = (filter: any[], fokusFilter: any[] | undefined) => {
+import { ExpressionFilterSpecification } from 'maplibre-gl'
+
+export const essentialFilterWithStyleFilter = (
+  filter: ExpressionFilterSpecification,
+  fokusFilter: ExpressionFilterSpecification | undefined,
+) => {
   /*
     // QGIS:
     "CC_Netzkategorie" is not null and
@@ -11,17 +16,20 @@ export const essentialFilterWithStyleFilter = (filter: any[], fokusFilter: any[]
   return [
     'all',
     filter,
-    fokusFilter,
+    fokusFilter ?? true,
     ['!=', ['get', 'CC_Netzkategorie'], null],
     ['>=', ['get', 'Monitor_JahrLetzteErneuerung'], 2018],
     ['in', ['get', 'Monitor_Breite'], ['literal', ['E', 'U']]],
     ['in', ['get', 'Monitor_Führungsform'], ['literal', ['E', 'U']]],
     ['in', ['get', 'Monitor_Oberfläche'], ['literal', ['E', 'U']]],
     ['in', ['get', 'Monitor_KfzStörungVermeiden'], ['literal', ['E', 'U']]],
-  ].filter(Boolean)
+  ] satisfies ExpressionFilterSpecification
 }
 
-export const partialFilterWithStyleFilter = (filter: any[], fokusFilter: any[] | undefined) => {
+export const partialFilterWithStyleFilter = (
+  filter: ExpressionFilterSpecification,
+  fokusFilter: ExpressionFilterSpecification | undefined,
+) => {
   /*
     // QGIS:
     "CC_Netzkategorie" is not null and
@@ -36,7 +44,7 @@ export const partialFilterWithStyleFilter = (filter: any[], fokusFilter: any[] |
   return [
     'all',
     filter,
-    fokusFilter,
+    fokusFilter ?? true,
     ['!=', ['get', 'CC_Netzkategorie'], null],
     ['>=', ['get', 'Monitor_JahrLetzteErneuerung'], 2018],
     [
@@ -46,5 +54,5 @@ export const partialFilterWithStyleFilter = (filter: any[], fokusFilter: any[] |
       ['in', ['get', 'Monitor_Oberfläche'], ['literal', ['E', 'T', 'U']]],
       ['in', ['get', 'Monitor_KfzStörungVermeiden'], ['literal', ['E', 'T', 'U']]],
     ],
-  ].filter(Boolean)
+  ] satisfies ExpressionFilterSpecification
 }

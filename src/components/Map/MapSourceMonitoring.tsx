@@ -1,18 +1,22 @@
-import { useStore } from '@nanostores/react'
+import { ExpressionFilterSpecification } from 'maplibre-gl'
 import { Layer, Source } from 'react-map-gl/maplibre'
-import { $category, $clickedMapData, $status } from '../store'
+import { useCategory, useClickedMapData, useStatus } from '../store'
+import { categoryFilters } from './categoryFilters.const'
 import { updateDate } from './data/updateDate.const'
-import { categoryFilters } from './FilterCategories'
 import { essentialFilterWithStyleFilter, partialFilterWithStyleFilter } from './filters'
 import { layers } from './layers'
 
 export const MapSourceMonitoring = () => {
-  const category = useStore($category)
-  const status = useStore($status)
-  const mapData = useStore($clickedMapData)
+  const category = useCategory()
+  const status = useStatus()
+  const mapData = useClickedMapData()
   const mapDataIds = mapData?.map((feature) => feature.properties?.CC_FID) ?? []
   const categoryFilter = categoryFilters[category].filterKey
-    ? ['==', ['get', 'CC_Netzkategorie'], categoryFilters[category].filterKey]
+    ? ([
+        '==',
+        ['get', 'CC_Netzkategorie'],
+        categoryFilters[category].filterKey,
+      ] satisfies ExpressionFilterSpecification)
     : undefined
 
   return (
@@ -39,17 +43,19 @@ export const MapSourceMonitoring = () => {
       />
 
       {layers.map((layer) => {
-        let filter = ['all', layer.filter, categoryFilter].filter(Boolean) as any
+        let filter: ExpressionFilterSpecification = categoryFilter
+          ? ['all', layer.filter, categoryFilter]
+          : ['all', layer.filter]
         if (status === 'umgesetzt') {
-          filter = essentialFilterWithStyleFilter(layer.filter, categoryFilter) as any
+          filter = essentialFilterWithStyleFilter(layer.filter, categoryFilter)
         }
         if (status === 'teilweise') {
-          filter = partialFilterWithStyleFilter(layer.filter, categoryFilter) as any
+          filter = partialFilterWithStyleFilter(layer.filter, categoryFilter)
         }
         return (
           <Layer
             key={layer.id}
-            {...(layer as any)}
+            {...layer}
             source="changing-cities-radnetz-monitoring"
             source-layer="default"
             filter={filter}

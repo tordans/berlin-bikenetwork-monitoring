@@ -1,4 +1,4 @@
-import type { categoryFilters } from '../FilterCategories'
+import type { categoryFilters } from '../categoryFilters.const'
 
 export type StatusKey = 'alles' | 'umgesetzt' | 'teilweise'
 export const stats = {

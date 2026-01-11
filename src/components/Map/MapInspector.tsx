@@ -1,15 +1,15 @@
-import { useStore } from '@nanostores/react'
-import { $clickedMapData } from '../store'
+import { useAppActions, useClickedMapData } from '../store'
 
 export const MapInspector = () => {
-  const clickedMapData = useStore($clickedMapData)
+  const clickedMapData = useClickedMapData()
+  const { setClickedMapData } = useAppActions()
 
   if (!clickedMapData || !clickedMapData.length) return null
 
   return (
     <section className="bg-ccBlue-900 text-ccBlue-50 absolute inset-x-1 bottom-1 z-50 overflow-y-auto rounded-lg shadow-xl sm:inset-x-auto sm:inset-y-2.5 sm:right-2.5 sm:w-96 sm:p-4">
       <button
-        onClick={() => $clickedMapData.set(undefined)}
+        onClick={() => setClickedMapData(undefined)}
         className="text-ccBlue-900 hover:bg-ccBlue-50 absolute top-2.5 right-2.5 z-10 rounded-full bg-white p-1.5 hover:shadow-lg"
       >
         <svg
@@ -40,7 +40,7 @@ export const MapInspector = () => {
                     return (
                       <tr key={key}>
                         <th className="text-left">{key}</th>
-                        <td>{value}</td>
+                        <td>{String(value)}</td>
                       </tr>
                     )
                   })}

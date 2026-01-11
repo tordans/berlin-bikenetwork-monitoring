@@ -1,6 +1,16 @@
+import { ExpressionFilterSpecification } from 'maplibre-gl'
+
 export const interactiveLayerIds = ['RSV', 'Vorrangnetz', 'Ergänzungsnetz', 'HVS']
 
-export const layers = [
+export const layers: Array<{
+  id: string
+  type: 'line'
+  paint: {
+    'line-color': string
+    'line-width': number
+  }
+  filter: ExpressionFilterSpecification
+}> = [
   {
     id: 'RSV',
     type: 'line',

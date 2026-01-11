@@ -6,61 +6,17 @@ import {
   Transition,
 } from '@headlessui/react'
 import { CheckIcon, ChevronUpDownIcon } from '@heroicons/react/20/solid'
-import { useStore } from '@nanostores/react'
 import { Fragment } from 'react'
 import { twJoin } from 'tailwind-merge'
-import { $category } from '../store'
-
-export type CategoryKey = keyof typeof categoryFilters
-
-export const categoryFilters = {
-  alle: {
-    name: 'Alle Netzkategorien',
-    filterKey: undefined,
-    color: 'transparent',
-    borderColor: 'transparent',
-    lineWidth: 1,
-  },
-  vorrangnetz: {
-    name: 'Vorrangnetz',
-    filterKey: 'Vorrangnetz',
-    color: '#db1e2a',
-    borderColor: 'transparent',
-    lineWidth: 5,
-  },
-  ergaenzungsnetz: {
-    name: 'Ergänzungsnetz',
-    filterKey: 'Ergänzungsnetz',
-    color: '#f7801e',
-    borderColor: 'transparent',
-    lineWidth: 3,
-  },
-  hvs: {
-    name: 'Radverkehrsanlagen an Hauptstraßen', // nach § 43 MobG
-    filterKey: 'HVS',
-    color: '#db2ac3',
-    borderColor: 'transparent',
-    lineWidth: 3,
-  },
-  rsv: {
-    name: 'Radschnellverbindungen (RSV)',
-    filterKey: 'RSV',
-    color: '#ff6011',
-    borderColor: '#000000',
-    lineWidth: 6,
-  },
-} as const
+import { useAppActions, useCategory } from '../store'
+import { categoryFilters } from './categoryFilters.const'
 
 export const FilterCategories = () => {
-  const category = useStore($category)
+  const category = useCategory()
+  const { setCategory } = useAppActions()
 
   return (
-    <Listbox
-      value={category}
-      onChange={(selected) => {
-        $category.set(selected)
-      }}
-    >
+    <Listbox value={category} onChange={setCategory}>
       {({ open }) => {
         return (
           <>
