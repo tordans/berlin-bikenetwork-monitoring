@@ -27,8 +27,8 @@ export const Map = () => {
         latitude: 52.5180225850377,
         zoom: 12,
       }}
-      // Style: https://cloud.maptiler.com/maps/dataviz/
-      mapStyle="https://api.maptiler.com/maps/dataviz/style.json?key=ur6Yh3ULc6QjatOYBgln"
+      // Basemap: https://openfreemap.org/ (Positron style)
+      mapStyle="https://tiles.openfreemap.org/styles/positron"
       style={{ width: '100%', height: '100%' }}
       hash
       // Set map state for <MapData>:
