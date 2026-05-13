@@ -4,19 +4,7 @@ export default {
   singleQuote: true,
   arrowParens: 'always',
   printWidth: 100,
-  plugins: [
-    'prettier-plugin-astro',
-    'prettier-plugin-organize-imports',
-    'prettier-plugin-tailwindcss',
-  ],
-  overrides: [
-    {
-      files: '*.astro',
-      options: {
-        parser: 'astro',
-      },
-    },
-  ],
+  plugins: ['prettier-plugin-organize-imports', 'prettier-plugin-tailwindcss'],
   tailwindFunctions: ['clsx', 'twMerge', 'twJoin'],
   tailwindAttributes: ['className', 'class:list', 'class', 'sectionClasses'],
 }
