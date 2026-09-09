@@ -21,7 +21,7 @@
     "@heroicons/react": "^2.2.0",
     "@tailwindcss/typography": "^0.5.19",
     "@turf/turf": "^7.3.5",
-    "maplibre-gl": "^5.24.0",
+    "maplibre-gl": "^6.8.0",
     "pmtiles": "^4.4.1",
     "react": "^19.2.6",
     "react-dom": "^19.2.6",
