@@ -1,0 +1,109 @@
+# From the FMC tech-stack template (tilda-geo), trimmed for this repo.
+# Schedule: open-source repos → first Friday of the month, 07:00 Europe/Berlin.
+# This repo installs with npm (package-lock.json), so the ecosystem is npm, not bun.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directories:
+      - /
+    schedule:
+      interval: cron
+      cronjob: '0 7 * * FRI#1'
+      timezone: Europe/Berlin
+    cooldown:
+      default-days: 5
+    open-pull-requests-limit: 1
+    exclude-paths:
+      - .cursor/**
+    commit-message:
+      prefix: chore
+      include: scope
+    ignore:
+      # Same exclusion as the `updatePackages:*` scripts in package.json.
+      - dependency-name: eslint
+        update-types:
+          - version-update:semver-major
+      - dependency-name: '@eslint/js'
+        update-types:
+          - version-update:semver-major
+    groups:
+      security-dev-tools:
+        applies-to: security-updates
+        patterns:
+          - '@types/*'
+          - 'typescript'
+          - 'typescript-eslint'
+          - 'eslint*'
+          - '@eslint/*'
+          - 'prettier*'
+
+      app-dev-minor-patch:
+        applies-to: version-updates
+        patterns:
+          - '@babel/*'
+          - '@eslint/*'
+          - '@rolldown/*'
+          - '@vitejs/*'
+          - 'babel-plugin-*'
+          - 'eslint*'
+          - 'globals'
+          - 'prettier*'
+          - 'rolldown'
+          - 'vite'
+          - '@types/*'
+          - 'typescript'
+          - 'typescript-eslint'
+          - 'zod-validation-error'
+        update-types:
+          - minor
+          - patch
+
+      app-framework-minor-patch:
+        applies-to: version-updates
+        patterns:
+          - '@headlessui/*'
+          - '@tailwindcss/*'
+          - 'tailwindcss'
+          - '@turf/*'
+          - 'react'
+          - 'react-dom'
+          - 'maplibre-gl'
+          - 'react-map-gl'
+          - 'zustand'
+        update-types:
+          - minor
+          - patch
+
+      app-prod-misc-patch:
+        applies-to: version-updates
+        update-types:
+          - patch
+        patterns:
+          - '*'
+        exclude-patterns:
+          - '@headlessui/*'
+          - '@tailwindcss/*'
+          - 'tailwindcss'
+          - '@turf/*'
+          - 'react'
+          - 'react-dom'
+          - 'maplibre-gl'
+          - 'react-map-gl'
+          - 'zustand'
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: cron
+      cronjob: '0 7 * * FRI#1'
+      timezone: Europe/Berlin
+    cooldown:
+      default-days: 5
+    open-pull-requests-limit: 1
+    groups:
+      actions-minor-patch:
+        update-types:
+          - minor
+          - patch
+        patterns:
+          - '*'
