@@ -1,4 +1,5 @@
-import maplibregl from 'maplibre-gl'
+import { addProtocol, removeProtocol, setWorkerUrl } from 'maplibre-gl'
+import maplibreWorkerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import { Protocol } from 'pmtiles'
 import { useEffect } from 'react'
@@ -7,14 +8,18 @@ import { useAppActions } from '../store'
 import { MapInspector } from './MapInspector'
 import { MapSourceMonitoring } from './MapSourceMonitoring'
 
+// maplibre-gl v6 is ESM-only and derives the worker URL from its own module URL, which a bundled
+// app does not have. Point it to the worker file that Vite emits.
+setWorkerUrl(maplibreWorkerUrl)
+
 export const Map = () => {
   const { setMapLoaded } = useAppActions()
 
   useEffect(() => {
     const protocol = new Protocol()
-    maplibregl.addProtocol('pmtiles', protocol.tile)
+    addProtocol('pmtiles', protocol.tile)
     return () => {
-      maplibregl.removeProtocol('pmtiles')
+      removeProtocol('pmtiles')
     }
   }, [])
 
